@@ -1,10 +1,10 @@
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Parsimony {
 
@@ -36,36 +36,33 @@ public class Parsimony {
             System.exit(1);
         }
 
-        System.out.println(matrix.get(0).size());
+//        System.out.println(matrix.get(0).size());
         filterColumns(matrix);
-        System.out.println(matrix.get(0).size());
+        int informativeSites = matrix.get(0).size();
 
-        generateTrees(matrix.size());
+        List<String> trees = generateTrees(matrix.size());
 
+        int[][] results = new int[trees.size()][informativeSites];
 
+        for(int i = 0; i < trees.size(); i++){
+            for (int j = 0; j < informativeSites; j++){
+                results[i][j] = getChanges(trees.get(i), j);
+            }
+        }
+
+        List<Integer> finalresult = new ArrayList<>();
+        for(int i = 0; i < trees.size(); i++){
+            finalresult.add(IntStream.of(results[i]).sum());
+        }
+
+        int index = finalresult.indexOf(finalresult.stream().max(Comparator.comparingInt(Integer::intValue)));
+        System.out.println(String.format("The best tree is tree %d : %s", index, trees.get(index)));
+        
 
     }
 
-//    private static void generateTrees(int n){
-//        Tree start = new Tree();
-//        List<Tree> trees = new ArrayList<>();
-//
-//        trees.add(start);
-//
-//        for(int i = 3; i <= n; i++){
-//            List<Tree> current = new ArrayList<>();
-//            for (Tree tree : trees){
-//                for(int j = 0; j < i; j++){
-//                    current.add(tree.deep)
-//                }
-//            }
-//        }
-//
-////        todo
-//
-//    }
 
-    private static void generateTrees(int n){
+    private static List<String> generateTrees(int n){
         List<String> trees = new ArrayList<>();
 
         trees.add(STARTTREE);
@@ -82,6 +79,8 @@ public class Parsimony {
 //            System.out.println(trees);
             System.out.println(trees.size());
         }
+
+        return trees;
 
     }
 
