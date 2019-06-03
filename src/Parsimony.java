@@ -16,7 +16,7 @@ public class Parsimony {
 
     public static void main(String[] args) {
 
-        Path infile = Paths.get("resources/HIV1_FLT_2017_env_DNA.fasta");
+        Path infile = Paths.get("resources/first10.fasta");
         List<List<Character>> matrix = new ArrayList<>();
         Map<Integer, String> names = new HashMap<>();
 
@@ -30,17 +30,19 @@ public class Parsimony {
                 names.put(i++, line);
                 line = reader.readLine();
                 matrix.add(line.chars().mapToObj(c -> (char)c).collect(Collectors.toList()));
+                line = reader.readLine();
             }
 
             reader.close();
             System.out.println(matrix.size());
-            System.exit(0);
         } catch (Exception ex) {
             System.out.println("Cannot read file");
             System.exit(1);
         }
 
+        System.out.println(matrix.get(0).size());
         filterColumns(matrix);
+        System.out.println(matrix.get(0).size());
 
         generateTrees(matrix.size());
 
@@ -70,6 +72,8 @@ public class Parsimony {
                         informative[j] = true;
                         break;
                     }
+                } else {
+                    diff.put(row.get(j), diff.get(row.get(j)) + 1);
                 }
             }
         }
