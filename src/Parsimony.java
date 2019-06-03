@@ -1,9 +1,14 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Parsimony {
+
+    private static final String STARTTREE = "(0, 1, 2)";
 
 //    input file: puno seq odjednom
 //    > naziv seq
@@ -11,12 +16,12 @@ public class Parsimony {
 
     public static void main(String[] args) {
 
-        String infile = "../resources/HIV1_FLT_2017_env_DNA.fasta";
+        Path infile = Paths.get("resources/HIV1_FLT_2017_env_DNA.fasta");
         List<List<Character>> matrix = new ArrayList<>();
         Map<Integer, String> names = new HashMap<>();
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(infile));
+            BufferedReader reader = new BufferedReader(new FileReader(infile.toString()));
             String line = reader.readLine();
 
             int i = 0;
@@ -28,6 +33,8 @@ public class Parsimony {
             }
 
             reader.close();
+            System.out.println(matrix.size());
+            System.exit(0);
         } catch (Exception ex) {
             System.out.println("Cannot read file");
             System.exit(1);
@@ -35,7 +42,15 @@ public class Parsimony {
 
         filterColumns(matrix);
 
+        generateTrees(matrix.size());
 
+
+
+    }
+
+    private static void generateTrees(int n){
+
+//        todo
 
     }
 
@@ -67,4 +82,6 @@ public class Parsimony {
             }
         }
     }
+
+
 }
