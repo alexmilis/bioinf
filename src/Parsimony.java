@@ -8,11 +8,7 @@ import java.util.stream.Collectors;
 
 public class Parsimony {
 
-    private static final String STARTTREE = "(0, 1, 2)";
-
-//    input file: puno seq odjednom
-//    > naziv seq
-//    seq
+    private static final String STARTTREE = "( 0 , 1 , 2 )";
 
     public static void main(String[] args) {
 
@@ -50,11 +46,46 @@ public class Parsimony {
 
     }
 
-    private static void generateTrees(int n){
+//    private static void generateTrees(int n){
+//        Tree start = new Tree();
+//        List<Tree> trees = new ArrayList<>();
+//
+//        trees.add(start);
+//
+//        for(int i = 3; i <= n; i++){
+//            List<Tree> current = new ArrayList<>();
+//            for (Tree tree : trees){
+//                for(int j = 0; j < i; j++){
+//                    current.add(tree.deep)
+//                }
+//            }
+//        }
+//
+////        todo
+//
+//    }
 
-//        todo
+    private static void generateTrees(int n){
+        List<String> trees = new ArrayList<>();
+
+        trees.add(STARTTREE);
+
+        for(int i = 3; i <= n; i++){
+            List<String> current = new ArrayList<>();
+            for (String tree : trees){
+                for(int j = 0; j < i; j++){
+                    current.add(tree.replaceFirst(String.format(" %d ", j), String.format(" ( %d , %d ) ", j, i)));
+                }
+            }
+            trees.clear();
+            trees.addAll(current);
+//            System.out.println(trees);
+            System.out.println(trees.size());
+        }
 
     }
+
+
 
     private static void filterColumns(List<List<Character>> matrix) {
         int columns = matrix.get(0).size();
