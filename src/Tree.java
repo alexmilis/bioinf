@@ -3,58 +3,84 @@ import java.util.List;
 
 public class Tree {
 
-    private Root root;
+    private Node root;
 
-    public Tree(){
-        this.root = new Root();
+    public Node getRoot() {
+        return root;
+    }
+
+    public Tree(Node root){
+        this.root = root;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("( ");
-        for (Node child : root.children){
-            child.print(sb);
-            sb.append(" , ");
-        }
+        root.print(sb);
         sb.deleteCharAt(sb.length() - 1);
-        sb.append(" )");
+        sb.append(";");
         return sb.toString();
     }
 
-    class Node {
-        Node left;
-        Node rigth;
-        int value;
+    public static Tree parse(String line){
+        return new Tree(getNode(line, 0));
+    }
+
+    private static Node getNode(String line, int index){
+        Node root = new Node(index, "");
+        StringBuilder current = new StringBuilder();
+        for (int i = index; i < line.length(); i++){
+            char c = line.charAt(i);
+            if (Character.isWhitespace(c)) continue;
+            switch (c){
+                case ')':
+                    if (current.length() > 0) root.children.add(new Node(i, current.toString()));
+                    root.index = i;
+                    return root;
+                case '(':
+                    Node child = getNode(line, ++i);
+                    i = child.index;
+                    root.children.add(child);
+                    break;
+                case ',':
+                    if(current.length() > 0) root.children.add(new Node(i, current.toString()));
+                    current = new StringBuilder();
+                    break;
+                default:
+                    current.append(c);
+                    break;
+            }
+        }
+        if(root.children.size() == 1) return root.children.get(0);
+        return root;
+    }
+
+
+    static class Node {
+        List<Node> children;
+        String value;
+        int depth;
         int index;
 
-        Node(int index){
-            this.left = null;
-            this.rigth = null;
+        Node(int index, String value){
+            this.children = new ArrayList<>();
             this.index = index;
+            this.value = value;
         }
 
         void print(StringBuilder sb){
-            if(left != null && rigth != null) {
+            if (children.size() > 0){
                 sb.append("( ");
-                left.print(sb);
-                sb.append(" , ");
-                rigth.print(sb);
-                sb.append(" ), ");
+                for(Node child : children){
+                    child.print(sb);
+                    sb.append(" , ");
+                }
+                sb.deleteCharAt(sb.length() - 1);
+                sb.deleteCharAt(sb.length() - 1);
+                sb.deleteCharAt(sb.length() - 1);
+                sb.append(" ) ");
             }
-//            if(rigth != null) rigth.print(sb);
-            sb.append(index);
-        }
-    }
-
-    class Root {
-        List<Node> children;
-
-        Root(){
-            this.children = new ArrayList<>();
-            this.children.add(new Node(0));
-            this.children.add(new Node(1));
-            this.children.add(new Node(2));
+            sb.append(value);
         }
     }
 }

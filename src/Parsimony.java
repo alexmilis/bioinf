@@ -46,7 +46,11 @@ public class Parsimony {
 
         for(int i = 0; i < trees.size(); i++){
             for (int j = 0; j < informativeSites; j++){
-                results[i][j] = getChanges(trees.get(i), j);
+                String tree = trees.get(i);
+                for (int k = 0; k < matrix.size(); k++){
+                    tree.replace(String.format(" %d ", k), String.format(" %c ", matrix.get(k).get(j)));
+                }
+//                results[i][j] = getChanges(tree, j);
             }
         }
 
@@ -57,7 +61,7 @@ public class Parsimony {
 
         int index = finalresult.indexOf(finalresult.stream().max(Comparator.comparingInt(Integer::intValue)));
         System.out.println(String.format("The best tree is tree %d : %s", index, trees.get(index)));
-        
+
 
     }
 
