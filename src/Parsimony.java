@@ -16,81 +16,83 @@ public class Parsimony {
 
     public static void main(String[] args) {
 //        Path infile = Paths.get("resources/first10.fasta");
-        Path infile = Paths.get("resources/first5.fasta");
-        List<List<Character>> matrix = new ArrayList<>();
-        Map<Integer, String> names = new HashMap<>();
+        for (int h = 5; h < 11; h++) {
 
-        System.out.println("Reading file: " + infile);
+            Path infile = Paths.get(String.format("resources/first%d.fasta", h));
+            List<List<Character>> matrix = new ArrayList<>();
+            Map<Integer, String> names = new HashMap<>();
 
-
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(infile.toString()));
-            String line = reader.readLine();
-
-            int i = 0;
-
-            while(line != null){
-                names.put(i++, line);
-                line = reader.readLine();
-                matrix.add(line.chars().mapToObj(c -> (char)c).collect(Collectors.toList()));
-                line = reader.readLine();
-            }
-
-            reader.close();
-            System.out.println(matrix.size());
-        } catch (Exception ex) {
-            System.out.println("Cannot read file");
-            System.exit(1);
-        }
-
-        long startTime = System.currentTimeMillis();
-
-        filterColumns(matrix);
-
-        int informativeSites = matrix.get(0).size();
-        int treesSize = generateTrees(matrix.size());
-
-        System.gc();
-        List<Integer> results = new LinkedList<>();
+            System.out.println("Reading file: " + infile);
 
 
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(topologies.toString()));
+            try {
+                BufferedReader reader = new BufferedReader(new FileReader(infile.toString()));
+                String line = reader.readLine();
 
-            for(int i = 0; i < treesSize; i++){
-                String treeString = reader.readLine();
-                int sum = 0;
-                for (int j = 0; j < informativeSites; j++){
-                    for (int k = 0; k < matrix.size(); k++){
-                        treeString = treeString.replace(String.format(" %d ", k), String.format(" %c ", matrix.get(k).get(j)));
-                    }
-                    Tree tree = Tree.parse(treeString);
-                    sum += tree.getChanges();
+                int i = 0;
+
+                while (line != null) {
+                    names.put(i++, line);
+                    line = reader.readLine();
+                    matrix.add(line.chars().mapToObj(c -> (char) c).collect(Collectors.toList()));
+                    line = reader.readLine();
                 }
-                results.add(sum);
+
+                reader.close();
+                System.out.println(matrix.size());
+            } catch (Exception ex) {
+                System.out.println("Cannot read file");
+                System.exit(1);
             }
 
-        } catch (IOException ex){
-            System.out.println("Cannot find file with topologies!");
-            System.exit(1);
+            long startTime = System.currentTimeMillis();
+
+            filterColumns(matrix);
+
+            int informativeSites = matrix.get(0).size();
+            int treesSize = generateTrees(matrix.size());
+
+            System.gc();
+            List<Integer> results = new LinkedList<>();
+
+
+            try {
+                BufferedReader reader = new BufferedReader(new FileReader(topologies.toString()));
+
+                for (int i = 0; i < treesSize; i++) {
+                    String treeString = reader.readLine();
+                    int sum = 0;
+                    for (int j = 0; j < informativeSites; j++) {
+                        for (int k = 0; k < matrix.size(); k++) {
+                            treeString = treeString.replace(String.format(" %d ", k), String.format(" %c ", matrix.get(k).get(j)));
+                        }
+                        Tree tree = Tree.parse(treeString);
+                        sum += tree.getChanges();
+                    }
+                    results.add(sum);
+                }
+
+            } catch (IOException ex) {
+                System.out.println("Cannot find file with topologies!");
+                System.exit(1);
+            }
+
+
+            long endTime = System.currentTimeMillis();
+
+            int index = results.indexOf(results.stream().min(Comparator.comparingInt(Integer::intValue)).get());
+            System.out.println(String.format("Number of changes: %d", results.get(index)));
+            System.out.println(String.format("The best tree is tree %d ", index));
+
+            try (Stream<String> lines = Files.lines(topologies)) {
+                String tree = lines.skip(index).findFirst().get();
+                System.out.println(tree);
+            } catch (IOException ex) {
+            }
+
+            System.out.println(String.format("Time in millis: %d \n\n\n", endTime - startTime));
+
         }
-
-
-        long endTime = System.currentTimeMillis();
-
-        int index = results.indexOf(results.stream().min(Comparator.comparingInt(Integer::intValue)).get());
-        System.out.println(String.format("Number of changes: %d", results.get(index)));
-        System.out.println(String.format("The best tree is tree %d ", index));
-
-        try (Stream<String> lines = Files.lines(topologies)) {
-            String tree = lines.skip(index).findFirst().get();
-            System.out.println(tree);
-        } catch (IOException ex){
-        }
-
-        System.out.println(String.format("Time in millis: %d ", endTime - startTime));
-
-
     }
 
 
