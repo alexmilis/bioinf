@@ -4,6 +4,7 @@ import java.util.List;
 public class Tree {
 
     private Node root;
+    private int size;
 
     public Node getRoot() {
         return root;
