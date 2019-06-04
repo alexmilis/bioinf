@@ -50,7 +50,7 @@ public class Parsimony {
                 for (int k = 0; k < matrix.size(); k++){
                     tree.replace(String.format(" %d ", k), String.format(" %c ", matrix.get(k).get(j)));
                 }
-//                results[i][j] = getChanges(tree, j);
+//                results[i][j] = postorder(tree, j);
             }
         }
 

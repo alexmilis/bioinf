@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Tree {
 
@@ -25,6 +27,44 @@ public class Tree {
 
     public static Tree parse(String line){
         return new Tree(getNode(line, 0));
+    }
+
+
+    public int getChanges(){
+        return postorder(root, 0);
+    }
+
+
+    private int postorder(Node root, int changes){
+        changes = 0;
+        for(Node child : root.children){
+            changes += postorder(child, 0);
+        }
+        changes += fitch(root);
+        return changes;
+    }
+
+    private int fitch(Node root){
+        if(root.children.size() > 0){
+            Set<String> intersection = new HashSet<>(root.children.get(0).value);
+            intersection.retainAll(root.children.get(1).value);
+            if (root.children.size() == 3){
+                intersection.retainAll(root.children.get(2).value);
+            }
+            if (intersection.size() > 0){
+                root.value = intersection;
+                return 0;
+            } else {
+                Set<String> union = new HashSet<>(root.children.get(0).value);
+                union.addAll(root.children.get(1).value);
+                if (root.children.size() == 3){
+                    union.addAll(root.children.get(2).value);
+                }
+                root.value = union;
+                return 1;
+            }
+        }
+        return 0;
     }
 
     private static Node getNode(String line, int index){
@@ -59,14 +99,15 @@ public class Tree {
 
     static class Node {
         List<Node> children;
-        String value;
+        Set<String> value;
         int depth;
         int index;
 
         Node(int index, String value){
             this.children = new ArrayList<>();
             this.index = index;
-            this.value = value;
+            this.value = new HashSet<>();
+            this.value.add(value);
         }
 
         void print(StringBuilder sb){
