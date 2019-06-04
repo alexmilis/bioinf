@@ -15,12 +15,12 @@ public class Parsimony {
     private static Path topologies = Paths.get("resources/topologies.txt");
 
     public static void main(String[] args) {
-        Path infile = Paths.get("resources/first10.fasta");
-//        Path infile = Paths.get("resources/first6.fasta");
+//        Path infile = Paths.get("resources/first10.fasta");
+        Path infile = Paths.get("resources/first5.fasta");
         List<List<Character>> matrix = new ArrayList<>();
         Map<Integer, String> names = new HashMap<>();
 
-        System.out.println(new Date());
+        System.out.println("Reading file: " + infile);
 
 
         try {
@@ -43,12 +43,13 @@ public class Parsimony {
             System.exit(1);
         }
 
+        long startTime = System.currentTimeMillis();
+
         filterColumns(matrix);
 
         int informativeSites = matrix.get(0).size();
         int treesSize = generateTrees(matrix.size());
 
-        System.out.println(new Date());
         System.gc();
         List<Integer> results = new LinkedList<>();
 
@@ -66,7 +67,6 @@ public class Parsimony {
                     Tree tree = Tree.parse(treeString);
                     sum += tree.getChanges();
                 }
-//                System.out.println(sum);
                 results.add(sum);
             }
 
@@ -75,9 +75,8 @@ public class Parsimony {
             System.exit(1);
         }
 
-        System.out.println(results);
 
-        System.out.println(new Date());
+        long endTime = System.currentTimeMillis();
 
         int index = results.indexOf(results.stream().min(Comparator.comparingInt(Integer::intValue)).get());
         System.out.println(String.format("Number of changes: %d", results.get(index)));
@@ -87,8 +86,9 @@ public class Parsimony {
             String tree = lines.skip(index).findFirst().get();
             System.out.println(tree);
         } catch (IOException ex){
-
         }
+
+        System.out.println(String.format("Time in millis: %d ", endTime - startTime));
 
 
     }
@@ -108,7 +108,6 @@ public class Parsimony {
             }
             trees.clear();
             trees.addAll(current);
-            System.out.println(trees.size());
         }
 
         try {
