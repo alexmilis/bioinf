@@ -122,7 +122,9 @@ public class Tree {
                 sb.deleteCharAt(sb.length() - 1);
                 sb.append(" ) ");
             }
-            sb.append(value);
+            for (String v : value){
+                sb.append(v);
+            }
         }
     }
 }

@@ -3,9 +3,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TreeTest {
-
-    Tree tree;
-
+    
     @Test
     public void testParseSimple() {
         Tree tree = Tree.parse("( ( a , b ) , c , d );");

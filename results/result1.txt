@@ -1,5 +1,4 @@
 Reading file: resources/first5.fasta
-5
 Number of changes: 29
 The best tree is tree 0
 ( ( ( 0 , 4 ) , 3 ) , 1 , 2 );
@@ -8,7 +7,6 @@ Time in millis: 139
 
 
 Reading file: resources/first6.fasta
-6
 Number of changes: 302
 The best tree is tree 0
 ( ( ( ( 0 , 5 ) , 4 ) , 3 ) , 1 , 2 );
@@ -17,7 +15,6 @@ Time in millis: 871
 
 
 Reading file: resources/first7.fasta
-7
 Number of changes: 494
 The best tree is tree 0
 ( ( ( ( ( 0 , 6 ) , 5 ) , 4 ) , 3 ) , 1 , 2 );
@@ -26,7 +23,6 @@ Time in millis: 1665
 
 
 Reading file: resources/first8.fasta
-8
 Number of changes: 670
 The best tree is tree 1
 ( ( ( ( ( 0 , 6 ) , 5 ) , 4 ) , 3 ) , ( 1 , 7 ) , 2 );
@@ -35,7 +31,6 @@ Time in millis: 8713
 
 
 Reading file: resources/first9.fasta
-9
 Number of changes: 774
 The best tree is tree 9
 ( ( ( ( ( 0 , 6 ) , 5 ) , 4 ) , 3 ) , ( ( 1 , 8 ) , 7 ) , 2 );
@@ -44,7 +39,6 @@ Time in millis: 88702
 
 
 Reading file: resources/first10.fasta
-10
 Number of changes: 924
 The best tree is tree 81
 ( ( ( ( ( ( 0 , 9 ) , 6 ) , 5 ) , 4 ) , 3 ) , ( ( 1 , 8 ) , 7 ) , 2 );

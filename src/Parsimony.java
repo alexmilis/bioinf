@@ -5,7 +5,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Parsimony {
@@ -15,22 +14,19 @@ public class Parsimony {
     private static Path topologies = Paths.get("resources/topologies.txt");
 
     public static void main(String[] args) {
-//        Path infile = Paths.get("resources/first10.fasta");
         for (int h = 5; h < 11; h++) {
-
             Path infile = Paths.get(String.format("resources/first%d.fasta", h));
+
             List<List<Character>> matrix = new ArrayList<>();
             Map<Integer, String> names = new HashMap<>();
 
             System.out.println("Reading file: " + infile);
-
 
             try {
                 BufferedReader reader = new BufferedReader(new FileReader(infile.toString()));
                 String line = reader.readLine();
 
                 int i = 0;
-
                 while (line != null) {
                     names.put(i++, line);
                     line = reader.readLine();
@@ -39,7 +35,6 @@ public class Parsimony {
                 }
 
                 reader.close();
-                System.out.println(matrix.size());
             } catch (Exception ex) {
                 System.out.println("Cannot read file");
                 System.exit(1);
@@ -54,7 +49,6 @@ public class Parsimony {
 
             System.gc();
             List<Integer> results = new LinkedList<>();
-
 
             try {
                 BufferedReader reader = new BufferedReader(new FileReader(topologies.toString()));
@@ -77,9 +71,7 @@ public class Parsimony {
                 System.exit(1);
             }
 
-
             long endTime = System.currentTimeMillis();
-
             int index = results.indexOf(results.stream().min(Comparator.comparingInt(Integer::intValue)).get());
             System.out.println(String.format("Number of changes: %d", results.get(index)));
             System.out.println(String.format("The best tree is tree %d ", index));
@@ -87,11 +79,9 @@ public class Parsimony {
             try (Stream<String> lines = Files.lines(topologies)) {
                 String tree = lines.skip(index).findFirst().get();
                 System.out.println(tree);
-            } catch (IOException ex) {
-            }
+            } catch (IOException ex) {}
 
             System.out.println(String.format("Time in millis: %d \n\n\n", endTime - startTime));
-
         }
     }
 
@@ -128,8 +118,6 @@ public class Parsimony {
         return trees.size();
     }
 
-
-
     private static void filterColumns(List<List<Character>> matrix) {
         int columns = matrix.get(0).size();
         boolean[] informative = new boolean[columns];
@@ -160,6 +148,4 @@ public class Parsimony {
             }
         }
     }
-
-
 }
