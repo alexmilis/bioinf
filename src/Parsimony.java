@@ -28,7 +28,7 @@ public class Parsimony {
 
                 int i = 0;
                 while (line != null) {
-                    names.put(i++, line);
+                    names.put(i++, line.substring(1));
                     line = reader.readLine();
                     matrix.add(line.chars().mapToObj(c -> (char) c).collect(Collectors.toList()));
                     line = reader.readLine();
@@ -76,10 +76,17 @@ public class Parsimony {
             System.out.println(String.format("Number of changes: %d", results.get(index)));
             System.out.println(String.format("The best tree is tree %d ", index));
 
+
+            String tree;
             try (Stream<String> lines = Files.lines(topologies)) {
-                String tree = lines.skip(index).findFirst().get();
+                tree = lines.skip(index).findFirst().get();
+                for (int k = 0; k < matrix.size(); k++) {
+                    tree = tree.replace(String.format(" %d ", k), String.format(" %s ", names.get(k)));
+                }
                 System.out.println(tree);
-            } catch (IOException ex) {}
+            } catch (IOException ex) {
+                System.exit(1);
+            }
 
             System.out.println(String.format("Time in millis: %d \n\n\n", endTime - startTime));
         }
