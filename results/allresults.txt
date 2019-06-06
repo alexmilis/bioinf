@@ -1,0 +1,477 @@
+Reading file: resources/random_data/prolazak1/random5.fasta
+Number of changes: 53
+The best tree is tree 0
+( ( ( A1.CM.08.886_24.KP718928 , A1.KE.00.00KE_KSM4030.AY736816 ) , A1.GM.05.N33456.HQ385452 ) , A1.CY.06.CY164.FJ388946 , A1.CY.09.CY243.JF683789 );
+Time in millis: 137
+
+
+
+Reading file: resources/random_data/prolazak1/random6.fasta
+Number of changes: 176
+The best tree is tree 0
+( ( ( ( A1.KE.06.06KE452693V6.KT022382 , B.CA.97.CQLDR03A1.GU562058 ) , B.BR.10.10BR_PE083.KT427702 ) , B.BR.02.02BR2042.JN692444 ) , A1.SE.12.065SE.MF373168 , A6.CY.07.CY213.JF683763 );
+Time in millis: 647
+
+
+
+Reading file: resources/random_data/prolazak1/random7.fasta
+Number of changes: 231
+The best tree is tree 24
+( ( ( ( A1.KE.06.06KECst_025.FJ623486 , B.CN.12.2361_0_1.KX693171 ) , ( B.BR.11.2011BRRJNEUT26.KX181912 , B.CN.04.CNHLJBF04024.EU131791 ) ) , B.BR.05.BREPM1093.FJ195089 ) , A1.TZ.05.CO0260V5.KX907341 , A6.RU.10.10RU6617.JX500696 );
+Time in millis: 1652
+
+
+
+Reading file: resources/random_data/prolazak1/random8.fasta
+Number of changes: 315
+The best tree is tree 172
+( ( ( ( A1.KE.11.320_KE.KU921746 , B.CY.07.CY195.JF683747 ) , ( ( B.CH.03.NAB2pre_cl_3.EU023919 , B.ES.05.1540906_2Fc1.KC595151 ) , B.CN.09.DEMB09CN002.KC596066 ) ) , B.BR.10.10BR_PE095.KT427700 ) , A1.UG.07.p9004SDM.JX236676 , B.AU.x.HCPI_11_01.GU367404 );
+Time in millis: 7785
+
+
+
+Reading file: resources/random_data/prolazak1/random9.fasta
+Number of changes: 1206
+The best tree is tree 0
+( ( ( ( ( ( ( A1.KE.05.05KE643439V4.KT022375 , B.CN.12.2406_12.KX693238 ) , B.CN.06.CNHLJ_M06058.EU131809 ) , B.CH.01.HIV_CH_BID_V3531_2001.JQ403024 ) , B.BR.10.10BR_RJ065.KT427866 ) , B.BR.05.05BR1082.JN692465 ) , B.AR.02.02AR114146.DQ383746 ) , A1.PK.15.PK026.KX232618 , A1.UG.90.UG275A.L22951 );
+Time in millis: 92014
+
+
+
+Reading file: resources/random_data/prolazak1/random10.fasta
+Number of changes: 459
+The best tree is tree 0
+( ( ( ( ( ( ( ( A1.CD.02.LA01AlPr.KU168256 , A1.KE.04.04KE649309V2.KT022367 ) , A1.KE.00.MSA4079.AF457086 ) , A1.KE.00.KNH1211.AF457070 ) , A1.KE.00.00KE_KER2018.AY736810 ) , A1.GM.05.N33456.HQ385452 ) , A1.GB.08.A220_C1.HQ595767 ) , A1.CY.08.CY230.JF683779 ) , A1.CY.05.CY051.FJ388903 , A1.CY.06.CY164.FJ388946 );
+Time in millis: 975646
+
+
+
+Reading file: resources/random_data/prolazak2/random5.fasta
+Number of changes: 87
+The best tree is tree 0
+( ( ( A1.KE.11.211_KE.KU921734 , B.CH.02.HIV_CH_BID_V3511_2002.JQ403019 ) , B.BR.10.10BR_PE061.KT427870 ) , A1.UG.07.191955_A11.HM215272 , B.AU.99.1181.AF538302 );
+Time in millis: 31
+
+
+
+Reading file: resources/random_data/prolazak2/random6.fasta
+Number of changes: 336
+The best tree is tree 0
+( ( ( ( A1.GB.08.CH080510_e_p2.HM204648 , A1.UG.07.191955_A11.HM215272 ) , A1.SE.94.SE7253.AF069670 ) , A1.KE.99.KSM4021.AF457075 ) , A1.KE.05.05KE185405V4.KT022370 , A1.KE.11.211_KE.KU921734 );
+Time in millis: 108
+
+
+
+Reading file: resources/random_data/prolazak2/random7.fasta
+Number of changes: 241
+The best tree is tree 0
+( ( ( ( ( A1.BE.97.PIC771_15.FM165628 , A1.FI.91.FIN91121.AF219261 ) , A1.CY.08.CY230.JF683779 ) , A1.CY.07.CY207.JF683759 ) , A1.CY.05.CY140.FJ388938 ) , A1.CM.07.46_10.KP718918 , A1.CY.05.CY051.FJ388903 );
+Time in millis: 805
+
+
+
+Reading file: resources/random_data/prolazak2/random8.fasta
+Number of changes: 534
+The best tree is tree 6
+( ( ( ( ( A1.KE.00.00KE_KNH1144.AY736812 , ( B.BE.96.VI1273.DQ313252 , B.BR.05.05BR1104.JN692474 ) ) , A6.RU.08.RUA004g.HQ834965 ) , A1.UG.99.99UGG03379.AF484493 ) , A1.TZ.03.CO0543V2.KX907348 ) , A1.KE.06.06KECst_021.FJ623477 , A1.KE.x.BG505_W6M_ENV_C2.DQ208458 );
+Time in millis: 12876
+
+
+
+Reading file: resources/random_data/prolazak2/random9.fasta
+Number of changes: 540
+The best tree is tree 0
+( ( ( ( ( ( ( A1.KE.00.MSA4076.AF457084 , B.CH.01.HIV_CH_BID_V3533_2001.JQ403025 ) , B.BR.10.10BR_SP021.KJ849796 ) , B.BR.10.10BR_PE019.KT427740 ) , B.BR.03.BREPM1027.EF637054 ) , A6.UA.11.DEMA111UA002.KU749399 ) , A1.UG.98.98UG57136.AF484509 ) , A1.KE.11.467_KE.KU921788 , A1.SE.93.001UG.MF373124 );
+Time in millis: 114502
+
+
+
+Reading file: resources/random_data/prolazak2/random10.fasta
+Number of changes: 379
+The best tree is tree 0
+( ( ( ( ( ( ( ( A1.KE.06.06KECst_021.FJ623477 , B.FR.08.DEMB08FR002.JX140654 ) , B.ES.04.3227050_2Fc1.KC595160 ) , B.CY.07.CY199.JF683751 ) , B.CN.12.2157_8.KX693091 ) , B.CN.04.CNE10.HM215397 ) , B.BR.10.10BR_SP062.KT427799 ) , B.BR.05.05BR1104.JN692474 ) , A1.TZ.03.CO0543V2.KX907348 , A6.RU.08.RUA004g.HQ834965 );
+Time in millis: 807906
+
+
+
+Reading file: resources/random_data/prolazak3/random5.fasta
+Number of changes: 51
+The best tree is tree 0
+( ( ( A1.CY.08.CY218.JF683767 , A1.KE.86.ML170_1986.AF539405 ) , A1.KE.11.023_KE.KU921708 ) , A1.KE.00.KER2009.AF457053 , A1.KE.05.05KE851891V4.KT022376 );
+Time in millis: 43
+
+
+
+Reading file: resources/random_data/prolazak3/random6.fasta
+Number of changes: 318
+The best tree is tree 4
+( ( ( A1.KE.04.04KE860822V3.KT022369 , ( B.BR.02.02BR2033.JN692440 , B.BR.10.10BR_PE020.KT427739 ) ) , A6.RU.07.RU_35_07_D2.JF952018 ) , A1.KE.97.ML752.AY322193 , A1.TZ.08.CH0219_e4.HM204621 );
+Time in millis: 216
+
+
+
+Reading file: resources/random_data/prolazak3/random7.fasta
+Number of changes: 277
+The best tree is tree 0
+( ( ( ( ( A1.KE.06.06KE196199V6.KT022378 , B.CN.04.CNHLJBF04030.EU131808 ) , B.BR.13.2013BRRJNEUT5.KX181895 ) , B.BR.10.10BR_PE035.KT427730 ) , B.BE.94.VI1399.DQ313253 ) , A1.RW.92.92RW008.AB253421 , A2.CM.01.01CM_1445MV.GU201516 );
+Time in millis: 986
+
+
+
+Reading file: resources/random_data/prolazak3/random8.fasta
+Number of changes: 283
+The best tree is tree 0
+( ( ( ( ( ( A1.CY.09.CY243.JF683789 , A1.UG.x.UG031.AB098330 ) , A1.TZ.97.97TZ03.AF361873 ) , A1.SE.95.SE8538.AF069669 ) , A1.PK.15.PK021.KX232614 ) , A1.KE.11.655_KE.KU921831 ) , A1.KE.00.MSA4079.AF457086 , A1.KE.06.06KECst_005.FJ623481 );
+Time in millis: 6738
+
+
+
+Reading file: resources/random_data/prolazak3/random9.fasta
+Number of changes: 527
+The best tree is tree 0
+( ( ( ( ( ( ( A1.KE.04.04KE263806V2.KT022361 , B.CH.x.NAB12pre_cl_7.EU023933 ) , B.BR.13.2013BRRJNEUT25.KX181911 ) , B.BR.10.10BR_PE095.KT427700 ) , B.BR.05.05BR1077.JN692460 ) , B.AR.99.ARMA132.AY037282 ) , A2.CD.97.97CDKTB48.AF286238 ) , A1.KE.11.DEMA111KE002.KF716474 , A1.TZ.00.515_F4_A9.HQ698029 );
+Time in millis: 113063
+
+
+
+Reading file: resources/random_data/prolazak3/random10.fasta
+Number of changes: 1446
+The best tree is tree 60972
+( ( ( ( A1.KE.00.00KE_KER2018.AY736810 , ( ( ( B.AU.x.HCPI_11_01.GU367404 , B.BR.10.10BR_SP007.KT427826 ) , B.BR.10.10BR_PE044.KT427721 ) , B.BR.05.05BR1077.JN692460 ) ) , A6.RU.08.08_RU_SP_R053_IV_D11.GU481350 ) , A1.UG.98.98UG57134.AF484507 ) , ( A1.KE.06.06KECst_019.FJ623478 , A1.TZ.00.515_F4_A9.HQ698029 ) , A1.KE.99.99KE_KNH1088.AY736811 );
+Time in millis: 1633738
+
+
+
+Reading file: resources/random_data/prolazak4/random5.fasta
+Number of changes: 135
+The best tree is tree 0
+( ( ( A1.CY.05.CY121.FJ388932 , A1.KE.06.06KE196199V6.KT022378 ) , A1.KE.04.04KE649309V2.KT022367 ) , A1.GB.08.A220_C1.HQ595767 , A1.KE.00.00KE_KSM4030.AY736816 );
+Time in millis: 46
+
+
+
+Reading file: resources/random_data/prolazak4/random6.fasta
+Number of changes: 188
+The best tree is tree 0
+( ( ( ( A1.KE.06.06KECst_007.FJ623476 , B.CH.07.T4SHCS617SGA_13_T4.KX792771 ) , B.BR.10.10BR_RJ100.KT427754 ) , B.BR.04.04BR1068.JN692457 ) , A1.TZ.00.21_F1_D2.HQ659597 , A6.RU.07.RU_41_07_A9_2.HQ338112 );
+Time in millis: 107
+
+
+
+Reading file: resources/random_data/prolazak4/random7.fasta
+Number of changes: 264
+The best tree is tree 0
+( ( ( ( ( A1.GB.08.I230_A10.HQ595782 , A4.CD.97.97CD_KTB13.AM000054 ) , A1.UG.09.DEMA109UG017.KP109490 ) , A1.TZ.00.216_F2_A1.HQ659604 ) , A1.PK.14.DEMA114PK027.KY658714 ) , A1.KE.05.05KE520997V4.KT022373 , A1.KE.11.339_KE.KU921752 );
+Time in millis: 817
+
+
+
+Reading file: resources/random_data/prolazak4/random8.fasta
+Number of changes: 335
+The best tree is tree 0
+( ( ( ( ( ( A1.KE.06.06KECst_007.FJ623476 , B.CY.05.CY089.FJ388920 ) , B.CN.08.CBJC513.JF346919 ) , B.CH.07.T4SHCS617SGA_13_T4.KX792771 ) , B.BR.10.10BR_RJ100.KT427754 ) , B.BR.04.04BR1068.JN692457 ) , A1.TZ.00.21_F1_D2.HQ659597 , A6.RU.07.RU_41_07_A9_2.HQ338112 );
+Time in millis: 7920
+
+
+
+Reading file: resources/random_data/prolazak4/random9.fasta
+Number of changes: 470
+The best tree is tree 1376
+( ( ( ( ( A1.KE.06.06KECst_019.FJ623478 , B.DK.01.CTL_017.EF514705 ) , B.CN.09.DEMB09CN002.KC596066 ) , ( ( B.BR.10.10BR_SP007.KT427826 , B.CY.05.CY131.FJ388935 ) , B.CH.x.NAB12pre_cl_7.EU023933 ) ) , B.BR.05.05BR1077.JN692460 ) , A1.TZ.00.515_F4_A9.HQ698029 , A6.RU.08.08_RU_SP_R053_IV_D11.GU481350 );
+Time in millis: 102160
+
+
+
+Reading file: resources/random_data/prolazak4/random10.fasta
+Number of changes: 926
+The best tree is tree 158276
+( ( A1.KE.09.12151802.HQ540689 , B.DE.09.172508.KT124754 ) , A1.TZ.08.707010117_C3.HQ615970 , ( ( ( ( ( ( B.AR.03.03AR137681.DQ383748 , B.GB.07.UKBH1BD9.JF706474 ) , B.ES.14.ARP1206.KT276266 ) , B.CN.99.plwj11_6.GU647196 ) , B.CN.07.AH070014.JF932469 ) , B.BR.15.2015BRRJNEUT29.KX181915 ) , B.BR.10.10BR_MG041.KT427673 ) );
+Time in millis: 1016740
+
+
+
+Reading file: resources/random_data/prolazak5/random5.fasta
+Number of changes: 129
+The best tree is tree 0
+( ( ( A1.FI.91.FIN91121.AF219261 , A1.RW.06.DEMA106RW003.KU749423 ) , A1.KE.11.DEMA111KE002.KF716474 ) , A1.KE.04.04KE263806V2.KT022361 , A1.KE.06.06KECst_019.FJ623478 );
+Time in millis: 30
+
+
+
+Reading file: resources/random_data/prolazak5/random6.fasta
+Number of changes: 426
+The best tree is tree 15
+( ( ( A1.KE.05.QF495_23M_ENV_D1.FJ866116 , B.BR.10.10BR_SP032.KT427811 ) , ( B.AU.95.C24.AF538304 , B.BR.09.C522_p1.JF680907 ) ) , A1.RW.07.R283F_7Dec07_3C4.KX983542 , A1.UG.98.98UG57142.AF484512 );
+Time in millis: 128
+
+
+
+Reading file: resources/random_data/prolazak5/random7.fasta
+Number of changes: 419
+The best tree is tree 28
+( ( ( A1.KE.04.04KE169579V3.KT022360 , ( ( B.AR.04.04AR151263.DQ383751 , B.BR.10.10BR_PE070_2.KT427853 ) , B.BR.04.04BR1055.JN692454 ) ) , A1.ZA.06.C.x.06.CF01_C8.KC863311 ) , A1.KE.11.713_KE.KU921841 , A1.TZ.00.216_F2_A1.HQ659604 );
+Time in millis: 1329
+
+
+
+Reading file: resources/random_data/prolazak5/random8.fasta
+Number of changes: 330
+The best tree is tree 0
+( ( ( ( ( ( A1.KE.11.024_KE.KU921712 , B.DE.16.1HD10K_W4_090516_B8_S15.KY324301 ) , B.CY.05.CY035.FJ388958 ) , B.CN.07.CBJC396.JF932477 ) , B.CA.06.HTM385B7.GU562266 ) , B.BR.10.10BR_PE020.KT427739 ) , A1.TZ.08.CH0219_e4.HM204621 , B.AR.98.ARCH054.AY037268 );
+Time in millis: 7823
+
+
+
+Reading file: resources/random_data/prolazak5/random9.fasta
+Number of changes: 896
+The best tree is tree 16914
+( ( ( A1.KE.11.023_KE.KU921708 , B.DE.10.587196.KT124783 ) , B.CN.07.BJOX006000.e05.KM217662 ) , A1.TZ.08.707010627_E3.HQ615979 , ( ( ( ( B.AR.07.DEURF07AR001.KY658686 , B.ES.89.As5_1b.KC595174 ) , B.CU.14.14CU005.KR914676 ) , B.CA.03.PSL024B10.GU562272 ) , B.BR.10.10BR_PE010.KJ849788 ) );
+Time in millis: 100127
+
+
+
+Reading file: resources/random_data/prolazak5/random10.fasta
+Number of changes: 452
+The best tree is tree 5
+( ( ( ( ( ( ( A1.KE.05.05KE884468V5.KT022377 , B.CN.12.3899_2.KX693491 ) , B.CN.07.GS070017.JF932484 ) , B.CH.03.NAB2pre_cl_3.EU023919 ) , ( B.BR.10.10BR_SP007.KT427826 , B.CY.09.CY241.JF683787 ) ) , B.BR.06.06BR1119.JN692480 ) , B.AR.99.ARMA132.AY037282 ) , A1.RW.06.DEMA106RW003.KU749423 , A1.UG.98.98UG57134.AF484507 );
+Time in millis: 973383
+
+
+
+Reading file: resources/random_data/prolazak6/random5.fasta
+Number of changes: 189
+The best tree is tree 0
+( ( ( A1.KE.05.05KE520997V4.KT022373 , B.BR.04.04BR1055.JN692454 ) , A6.UA.01.01UADN139.DQ823357 ) , A1.PK.14.DEMA114PK027.KY658714 , A1.UG.09.DEMA109UG017.KP109490 );
+Time in millis: 39
+
+
+
+Reading file: resources/random_data/prolazak6/random6.fasta
+Number of changes: 416
+The best tree is tree 0
+( ( ( ( A1.KE.05.05KE643439V4.KT022375 , B.BR.10.10BR_RJ065.KT427866 ) , B.BR.05.05BR1082.JN692465 ) , B.AR.02.02AR114146.DQ383746 ) , A1.PK.15.PK026.KX232618 , A1.UG.90.UG275A.L22951 );
+Time in millis: 117
+
+
+
+Reading file: resources/random_data/prolazak6/random7.fasta
+Number of changes: 275
+The best tree is tree 0
+( ( ( ( ( A1.KE.06.06KECst_005.FJ623481 , B.CN.07.JS070389.JF932491 ) , B.CH.02.T1SHCS901cl_D2_T1.KX792621 ) , B.BR.10.10BR_RJ050.KJ849811 ) , B.BR.03.BREPM1040.EF637047 ) , A1.SE.95.SE8538.AF069669 , A6.RU.06.RU_SP_B_049.JQ292900 );
+Time in millis: 852
+
+
+
+Reading file: resources/random_data/prolazak6/random8.fasta
+Number of changes: 514
+The best tree is tree 0
+( ( ( ( ( ( A1.KE.04.04KE169579V3.KT022360 , B.BR.12.2012BRRJNEUT23.KX181909 ) , B.BR.10.10BR_PE070_2.KT427853 ) , B.BR.04.04BR1055.JN692454 ) , B.AR.04.04AR151263.DQ383751 ) , A1.ZA.06.C.x.06.CF01_C8.KC863311 ) , A1.KE.11.713_KE.KU921841 , A1.TZ.00.216_F2_A1.HQ659604 );
+Time in millis: 12115
+
+
+
+Reading file: resources/random_data/prolazak6/random9.fasta
+Number of changes: 387
+The best tree is tree 6
+( ( ( ( ( ( A1.CY.08.CY235.JF683782 , A1.UG.11.DEMA110UG001.KF859745 ) , ( A1.TZ.05.CO0439V5.KX907347 , A2.CM.01.01CM_1445MV.GU201516 ) ) , A1.RW.92.92RW008.AB253421 ) , A1.KE.98.QA413_1007M_ENV_E15.FJ396018 ) , A1.KE.11.366_KE.KU921756 ) , A1.KE.00.MSA4069.AF457080 , A1.KE.06.06KE196199V6.KT022378 );
+Time in millis: 83024
+
+
+
+Reading file: resources/random_data/prolazak6/random10.fasta
+Number of changes: 393
+The best tree is tree 63
+( ( ( ( ( ( ( A1.KE.11.263_KE.KU921738 , B.GB.09.W452_p1.JF680937 ) , ( B.ES.04.3227058_6Fc1.KC595162 , B.FR.89.1197.KC699007 ) ) , B.CY.06.CY168.FJ388949 ) , B.CN.08.cbjc468.JF932498 ) , B.CH.02.HIV_CH_BID_V4478_2002.JQ403047 ) , B.BR.10.10BR_PE081.KT427872 ) , A1.UG.07.p191084.JX236669 , B.AU.x.CB3csf2.JN002009 );
+Time in millis: 846701
+
+
+
+Reading file: resources/random_data/prolazak7/random5.fasta
+Number of changes: 89
+The best tree is tree 0
+( ( ( A1.IN.00.NARI_FLS_VB99_30.KT152846 , A1.UG.00.PP6_F2_B1.HM027846 ) , A1.RW.93.93RW037A.AB287379 ) , A1.KE.06.06KE335214V6.KT022380 , A1.KE.86.ML013_10.AY322184 );
+Time in millis: 26
+
+
+
+Reading file: resources/random_data/prolazak7/random6.fasta
+Number of changes: 244
+The best tree is tree 0
+( ( ( ( A1.KE.00.00KE_KER2018.AY736810 , A6.RU.08.08_RU_SP_R053_IV_D11.GU481350 ) , A1.UG.98.98UG57134.AF484507 ) , A1.TZ.00.515_F4_A9.HQ698029 ) , A1.KE.06.06KECst_019.FJ623478 , A1.KE.99.99KE_KNH1088.AY736811 );
+Time in millis: 132
+
+
+
+Reading file: resources/random_data/prolazak7/random7.fasta
+Number of changes: 258
+The best tree is tree 0
+( ( ( ( ( A1.KE.08.Donor_64.KT252544 , B.CN.12.3899_2.KX693491 ) , B.CN.06.CNHLJBM06050.EU131798 ) , B.BR.13.2013BRRJNEUT5.KX181895 ) , B.BR.10.10BR_MG018.KT427683 ) , A1.TZ.06.CO6974V7.KX907431 , A6.UA.12.DEMA112UA040.KY658682 );
+Time in millis: 805
+
+
+
+Reading file: resources/random_data/prolazak7/random8.fasta
+Number of changes: 518
+The best tree is tree 0
+( ( ( ( ( ( A1.IN.99.NARI_FLS_VB15.KT152842 , B.BR.02.02BR2042.JN692444 ) , B.AR.03.03AR137681.DQ383748 ) , A6.CY.07.CY213.JF683763 ) , A1.UG.07.p191845.JX236671 ) , A1.SE.12.065SE.MF373168 ) , A1.KE.06.06KE452693V6.KT022382 , A1.KE.94.MF520.W14M.HH2.KX168075 );
+Time in millis: 12218
+
+
+
+Reading file: resources/random_data/prolazak7/random9.fasta
+Number of changes: 335
+The best tree is tree 7
+( ( ( ( ( ( A1.KE.11.263_KE.KU921738 , ( B.ES.04.3227058_6Fc1.KC595162 , B.FR.89.1197.KC699007 ) ) , B.CY.06.CY168.FJ388949 ) , B.CN.08.cbjc468.JF932498 ) , B.CH.02.HIV_CH_BID_V4478_2002.JQ403047 ) , B.BR.10.10BR_PE081.KT427872 ) , A1.UG.07.p191084.JX236669 , B.AU.x.CB3csf2.JN002009 );
+Time in millis: 71959
+
+
+
+Reading file: resources/random_data/prolazak7/random10.fasta
+Number of changes: 561
+The best tree is tree 14440
+( ( ( A1.KE.04.04KE809842V2.KT022368 , ( ( ( ( ( B.BR.02.02BR011.DQ358809 , B.CN.12.2362_2_19.KX693770 ) , B.CN.07.AH070057.JF932472 ) , B.CH.03.HIV_CH_BID_V4470_2003.JQ403045 ) , B.BR.10.10BR_SP043.KJ849807 ) , B.BR.10.10BR_MG045.KT427670 ) ) , A6.RU.07.07_RU_SP_R526_IorII_A30.GU481486 ) , A1.KE.96.QB726_70M_ENV_C4.FJ866112 , A1.TZ.08.707010240_A7.HQ615971 );
+Time in millis: 1237951
+
+
+
+Reading file: resources/random_data/prolazak8/random5.fasta
+Number of changes: 58
+The best tree is tree 0
+( ( ( A1.GB.08.A220_C1.HQ595767 , A1.RW.92.92RW008.AB253421 ) , A1.KE.95.QB850.73p.E3.KT008652 ) , A1.KE.04.04KE649309V2.KT022367 , A1.KE.08.Donor_64.KT252544 );
+Time in millis: 34
+
+
+
+Reading file: resources/random_data/prolazak8/random6.fasta
+Number of changes: 244
+The best tree is tree 0
+( ( ( ( A1.KE.00.00KE_KNH1144.AY736812 , A6.RU.08.RUA004g.HQ834965 ) , A1.UG.99.99UGG03379.AF484493 ) , A1.TZ.03.CO0543V2.KX907348 ) , A1.KE.06.06KECst_021.FJ623477 , A1.KE.x.BG505_W6M_ENV_C2.DQ208458 );
+Time in millis: 132
+
+
+
+Reading file: resources/random_data/prolazak8/random7.fasta
+Number of changes: 219
+The best tree is tree 0
+( ( ( ( ( A1.BE.x.VI2809.EU191615 , A1.GB.x.MC108.Y13717 ) , A1.GB.08.A220_C1.HQ595767 ) , A1.CY.08.CY235.JF683782 ) , A1.CY.07.CY207.JF683759 ) , A1.CM.99.99CM_MP1433.AM279348 , A1.CY.05.CY121.FJ388932 );
+Time in millis: 690
+
+
+
+Reading file: resources/random_data/prolazak8/random8.fasta
+Number of changes: 335
+The best tree is tree 0
+( ( ( ( ( ( A1.KE.06.06KECst_005.FJ623481 , B.CY.05.CY028.FJ388895 ) , B.CN.07.JS070389.JF932491 ) , B.CH.02.T1SHCS901cl_D2_T1.KX792621 ) , B.BR.10.10BR_RJ050.KJ849811 ) , B.BR.03.BREPM1040.EF637047 ) , A1.SE.95.SE8538.AF069669 , A6.RU.06.RU_SP_B_049.JQ292900 );
+Time in millis: 7924
+
+
+
+Reading file: resources/random_data/prolazak8/random9.fasta
+Number of changes: 381
+The best tree is tree 0
+( ( ( ( ( ( ( A1.CY.08.CY218.JF683767 , A1.UG.97.368MPc02.EU853062 ) , A1.TZ.08.707010627_E3.HQ615979 ) , A1.SE.94.SE7535.AF069671 ) , A1.PK.15.PK034.KX232624 ) , A1.KE.86.ML170_1986.AF539405 ) , A1.KE.11.023_KE.KU921708 ) , A1.KE.00.KER2009.AF457053 , A1.KE.05.05KE851891V4.KT022376 );
+Time in millis: 80183
+
+
+
+Reading file: resources/random_data/prolazak8/random10.fasta
+Number of changes: 635
+The best tree is tree 0
+( ( ( ( ( ( ( ( A1.FI.91.FIN91121.AF219261 , B.AR.99.ARMA132.AY037282 ) , A6.RU.08.08_RU_SP_R053_IV_D11.GU481350 ) , A2.CD.97.97CDKTB48.AF286238 ) , A1.UG.07.p9004SDM.JX236676 ) , A1.TZ.00.515_F4_A9.HQ698029 ) , A1.RW.06.DEMA106RW003.KU749423 ) , A1.KE.11.DEMA111KE002.KF716474 ) , A1.KE.04.04KE263806V2.KT022361 , A1.KE.06.06KECst_019.FJ623478 );
+Time in millis: 1344040
+
+
+
+Reading file: resources/random_data/prolazak9/random5.fasta
+Number of changes: 135
+The best tree is tree 0
+( ( ( A1.CY.05.CY121.FJ388932 , A1.KE.06.06KE196199V6.KT022378 ) , A1.KE.04.04KE649309V2.KT022367 ) , A1.GB.08.A220_C1.HQ595767 , A1.KE.00.00KE_KSM4030.AY736816 );
+Time in millis: 33
+
+
+
+Reading file: resources/random_data/prolazak9/random6.fasta
+Number of changes: 296
+The best tree is tree 0
+( ( ( ( A1.CY.05.CY064.FJ388909 , A1.KE.06.06KE452693V6.KT022382 ) , A1.KE.05.05KE376579V4.KT022372 ) , A1.KE.00.MSA4072.AF457083 ) , A1.CY.08.CY236.JF683783 , A1.IN.99.NARI_FLS_VB15.KT152842 );
+Time in millis: 92
+
+
+
+Reading file: resources/random_data/prolazak9/random7.fasta
+Number of changes: 654
+The best tree is tree 302
+( ( A1.KE.11.023_KE.KU921708 , B.CN.07.BJOX006000.e05.KM217662 ) , A1.TZ.08.707010627_E3.HQ615979 , ( ( ( B.AR.07.DEURF07AR001.KY658686 , B.CU.14.14CU005.KR914676 ) , B.CA.03.PSL024B10.GU562272 ) , B.BR.10.10BR_PE010.KJ849788 ) );
+Time in millis: 1069
+
+
+
+Reading file: resources/random_data/prolazak9/random8.fasta
+Number of changes: 474
+The best tree is tree 200
+( ( ( A1.KE.04.04KE809842V2.KT022368 , ( ( ( B.BR.02.02BR011.DQ358809 , B.CH.03.HIV_CH_BID_V4470_2003.JQ403045 ) , B.BR.10.10BR_SP043.KJ849807 ) , B.BR.10.10BR_MG045.KT427670 ) ) , A6.RU.07.07_RU_SP_R526_IorII_A30.GU481486 ) , A1.KE.96.QB726_70M_ENV_C4.FJ866112 , A1.TZ.08.707010240_A7.HQ615971 );
+Time in millis: 11649
+
+
+
+Reading file: resources/random_data/prolazak9/random9.fasta
+Number of changes: 698
+The best tree is tree 0
+( ( ( ( ( ( ( A1.CH.03.HIV_CH_BID_V3538_2003.JQ403028 , A1.KE.04.QG984_21M_ENV_A3.FJ866117 ) , A1.KE.04.04KE263806V2.KT022361 ) , A1.KE.00.KSM4024.AF457077 ) , A1.KE.00.00KE_KER2018.AY736810 ) , A1.GB.x.MC108.Y13717 ) , A1.FI.91.FIN91121.AF219261 ) , A1.CY.05.CY106.FJ388925 , A1.CY.07.CY208.JF683760 );
+Time in millis: 75209
+
+
+
+Reading file: resources/random_data/prolazak9/random10.fasta
+Number of changes: 926
+The best tree is tree 158276
+( ( A1.KE.09.12151802.HQ540689 , B.DE.09.172508.KT124754 ) , A1.TZ.08.707010117_C3.HQ615970 , ( ( ( ( ( ( B.AR.03.03AR137681.DQ383748 , B.GB.07.UKBH1BD9.JF706474 ) , B.ES.14.ARP1206.KT276266 ) , B.CN.99.plwj11_6.GU647196 ) , B.CN.07.AH070014.JF932469 ) , B.BR.15.2015BRRJNEUT29.KX181915 ) , B.BR.10.10BR_MG041.KT427673 ) );
+Time in millis: 1017344
+
+
+
+Reading file: resources/random_data/prolazak10/random5.fasta
+Number of changes: 74
+The best tree is tree 0
+( ( ( A1.KE.11.024_KE.KU921712 , B.CA.06.HTM385B7.GU562266 ) , B.BR.10.10BR_PE020.KT427739 ) , A1.TZ.08.CH0219_e4.HM204621 , B.AR.98.ARCH054.AY037268 );
+Time in millis: 30
+
+
+
+Reading file: resources/random_data/prolazak10/random6.fasta
+Number of changes: 328
+The best tree is tree 0
+( ( ( ( A1.CY.08.CY236.JF683783 , A1.SE.12.065SE.MF373168 ) , A1.KE.x.BI206_W6P_ENV_C1.DQ208467 ) , A1.KE.11.407_KE.KU921783 ) , A1.KE.00.MSA4072.AF457083 , A1.KE.06.06KE452693V6.KT022382 );
+Time in millis: 99
+
+
+
+Reading file: resources/random_data/prolazak10/random7.fasta
+Number of changes: 281
+The best tree is tree 0
+( ( ( ( ( A1.KE.05.05KE884468V5.KT022377 , B.CH.03.NAB2pre_cl_3.EU023919 ) , B.BR.10.10BR_SP007.KT427826 ) , B.BR.06.06BR1119.JN692480 ) , B.AR.99.ARMA132.AY037282 ) , A1.RW.06.DEMA106RW003.KU749423 , A1.UG.98.98UG57134.AF484507 );
+Time in millis: 875
+
+
+
+Reading file: resources/random_data/prolazak10/random8.fasta
+Number of changes: 335
+The best tree is tree 0
+( ( ( ( ( ( A1.KE.06.06KECst_007.FJ623476 , B.CY.05.CY089.FJ388920 ) , B.CN.08.CBJC513.JF346919 ) , B.CH.07.T4SHCS617SGA_13_T4.KX792771 ) , B.BR.10.10BR_RJ100.KT427754 ) , B.BR.04.04BR1068.JN692457 ) , A1.TZ.00.21_F1_D2.HQ659597 , A6.RU.07.RU_41_07_A9_2.HQ338112 );
+Time in millis: 7897
+
+
+
+Reading file: resources/random_data/prolazak10/random9.fasta
+Number of changes: 1126
+The best tree is tree 0
+( ( ( ( ( ( ( A1.KE.04.04KE860822V3.KT022369 , B.CN.07.CBJC396.JF932477 ) , B.CH.06.T3SHCS566SGA_17_T3.KX792664 ) , B.BR.10.DEMB10BR038.KU749390 ) , B.BR.10.10BR_PE020.KT427739 ) , B.BR.02.02BR2033.JN692440 ) , A6.RU.07.RU_35_07_D2.JF952018 ) , A1.KE.97.ML752.AY322193 , A1.TZ.08.CH0219_e4.HM204621 );
+Time in millis: 120812
+
+
+
+Reading file: resources/random_data/prolazak10/random10.fasta
+Number of changes: 561
+The best tree is tree 14440
+( ( ( A1.KE.04.04KE809842V2.KT022368 , ( ( ( ( ( B.BR.02.02BR011.DQ358809 , B.CN.12.2362_2_19.KX693770 ) , B.CN.07.AH070057.JF932472 ) , B.CH.03.HIV_CH_BID_V4470_2003.JQ403045 ) , B.BR.10.10BR_SP043.KJ849807 ) , B.BR.10.10BR_MG045.KT427670 ) ) , A6.RU.07.07_RU_SP_R526_IorII_A30.GU481486 ) , A1.KE.96.QB726_70M_ENV_C4.FJ866112 , A1.TZ.08.707010240_A7.HQ615971 );
+Time in millis: 1242070
