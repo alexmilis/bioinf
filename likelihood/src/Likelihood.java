@@ -85,8 +85,9 @@ public class Likelihood {
 
     }
 
-    static double evaluateBranches(){
-        
+    static double evaluateBranches(Tree tree){
+
+
     }
 
 
