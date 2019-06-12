@@ -9,18 +9,24 @@ import java.util.stream.Collectors;
 
 public class Likelihood {
 
-    private static List<String> bases = List.of("a", "t", "c", "g");
+    private static List<Character> bases = List.of('a', 't', 'c', 'g');
 
-    static double[] prior;
-    static double[][] changeProbabilities;
+    private static double[] prior = new double[]{0.25, 0.25, 0.25, 0.25};
+    private static double[][] changeProbabilities = new double[][]{{0.8, 0.1, 0.1, 0.1},
+                                                                    {0.1, 0.8, 0.1, 0.1},
+                                                                    {0.1, 0.1, 0.8, 0.1},
+                                                                    {0.1, 0.1, 0.1, 0.8}};
 
-    static final String STARTTREE = "(0, 1);"
+    private static final String STARTTREE = "(0, 1);";
+
+    private static final double THRESHOLD = 0.05;
+    private static final double STEP = 0.1;
 
     public static void main(String[] args) {
 //        Path infile = Paths.get(String.format(random, g, h));
         Path infile;
 
-        List<List<Character>> matrix = new ArrayList<>();
+        List<List<Integer>> matrix = new ArrayList<>();
         Map<Integer, String> names = new HashMap<>();
 
         System.out.println("Reading file: " + infile);
@@ -33,7 +39,7 @@ public class Likelihood {
             while (line != null) {
                 names.put(i++, line.substring(1));
                 line = reader.readLine();
-                matrix.add(line.chars().mapToObj(c -> (char) c).collect(Collectors.toList()));
+                matrix.add(line.chars().mapToObj(c -> bases.indexOf(c)).collect(Collectors.toList()));
                 line = reader.readLine();
             }
 
@@ -44,9 +50,6 @@ public class Likelihood {
         }
 
         long startTime = System.currentTimeMillis();
-
-//        todo pretpostavka da su sve vjerojatnosti prijelaza jednako vjerojatne
-        double[] priorprob = [0.25, 0.25, 0.25, 0.25];
 
 
         List<String> trees = new ArrayList<>();
@@ -62,7 +65,7 @@ public class Likelihood {
                 for (int j = 0; j < i; j++) {
                     String newtree = tree.replaceFirst(String.format(" %d ", j), String.format(" ( %d , %d ) ", j, i));
                     current.add(newtree);
-                    likelihoods.add(getLikelihood(Tree.parse(newtree), priorprob));
+                    likelihoods.add(getLikelihood(Tree.parse(newtree)));
                 }
             }
             trees.clear();
@@ -91,9 +94,8 @@ public class Likelihood {
     }
 
 
-    static double getLikelihood(Tree tree, double[] prob){
+    static double getLikelihood(Tree tree){
         double sum = 0;
-        prior = prob;
 
         for(int i = 0; i < 4; i++){
             sum += prior[i] * likelihood(tree.getRoot(), i);
@@ -108,7 +110,6 @@ public class Likelihood {
     private static double likelihood(Tree.Node node, int index){
         double product = 1;
 
-//        product moze biti 1 samo kad je list i odgovara indexu
         if(node.children.size() == 0){
             if(index == bases.indexOf(node.value)) return 1;
             return 0;
