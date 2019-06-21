@@ -29,63 +29,54 @@ public class Tree {
         return new Tree(getNode(line, 0));
     }
 
-
-    public int getChanges(){
-        return postorder(root, 0);
-    }
-
-
-    private int postorder(Node root, int changes){
-        changes = 0;
-        for(Node child : root.children){
-            changes += postorder(child, 0);
-        }
-        changes += fitch(root);
-        return changes;
-    }
-
-    private int fitch(Node root){
-        if(root.children.size() > 0){
-            Set<String> intersection = new HashSet<>(root.children.get(0).value);
-            intersection.retainAll(root.children.get(1).value);
-            if (root.children.size() == 3){
-                intersection.retainAll(root.children.get(2).value);
-            }
-            if (intersection.size() > 0){
-                root.value = intersection;
-                return 0;
-            } else {
-                Set<String> union = new HashSet<>(root.children.get(0).value);
-                union.addAll(root.children.get(1).value);
-                if (root.children.size() == 3){
-                    union.addAll(root.children.get(2).value);
-                }
-                root.value = union;
-                return 1;
-            }
-        }
-        return 0;
-    }
-
     private static Node getNode(String line, int index){
         Node root = new Node(index, "");
         StringBuilder current = new StringBuilder();
+
+        Node lastNode = null;
+        boolean state = false;
+        String name = null;
+
         for (int i = index; i < line.length(); i++){
             char c = line.charAt(i);
             if (Character.isWhitespace(c)) continue;
+
+            if(state){
+                if (Character.isDigit(c) || c == '.'){
+                    current.append(c);
+                    continue;
+                } else {
+                    lastNode.distance = Double.parseDouble(current.toString());
+                    state = false;
+                    continue;
+                }
+            }
+
             switch (c){
                 case ')':
-                    if (current.length() > 0) root.children.add(new Node(i, current.toString()));
+                    if (current.length() > 0){
+                        lastNode = new Node(i, current.toString());
+                        root.children.add(lastNode);
+                    }
                     root.index = i;
                     return root;
                 case '(':
                     Node child = getNode(line, ++i);
+                    lastNode = child;
                     i = child.index;
                     root.children.add(child);
                     break;
                 case ',':
-                    if(current.length() > 0) root.children.add(new Node(i, current.toString()));
+                    if(current.length() > 0){
+                        lastNode = new Node(i, name);
+                        root.children.add(lastNode);
+                    }
                     current = new StringBuilder();
+                    break;
+                case ':':
+                    name = current.toString();
+                    current = new StringBuilder();
+                    state = true;
                     break;
                 default:
                     current.append(c);
@@ -103,9 +94,10 @@ public class Tree {
         double distance;
         int index;
 
-        Node(int index, String value){
+        Node(int index, String value, double distance){
             this.children = new ArrayList<>();
             this.index = index;
+            this.distance = distance;
             this.value = new HashSet<>();
             this.value.add(value);
         }
