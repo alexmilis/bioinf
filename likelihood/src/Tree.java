@@ -100,7 +100,7 @@ public class Tree {
     static class Node {
         List<Node> children;
         Set<String> value;
-        int distance;
+        double distance;
         int index;
 
         Node(int index, String value){
