@@ -24,6 +24,7 @@ public class Tree {
         sb.deleteCharAt(sb.length() - 1);
         sb.deleteCharAt(sb.length() - 1);
         sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
         sb.append(";");
         return sb.toString();
     }
@@ -129,7 +130,7 @@ public class Tree {
                 sb.append(" ) ");
             }
             for (String v : value){
-                sb.append(v).append(":").append(distance);
+                sb.append(v).append(" : ").append(distance);
             }
         }
     }

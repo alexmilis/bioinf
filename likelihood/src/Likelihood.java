@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -14,15 +15,20 @@ public class Likelihood {
                                                                     {0.1, 0.1, 0.8, 0.1},
                                                                     {0.1, 0.1, 0.1, 0.8}};
 
-    private static final String STARTTREE = "(0, 1);";
+    private static final String STARTTREE = "( 0 : 1.0 , 1 : 1.0);";
 
     private static final double THRESHOLD = 0.05;
+
+    private static String first = "resources/first%d.fasta";
+
 
     public static void main(String[] args) {
 //        Path infile = Paths.get(String.format(random, g, h));
 //        TODO ULAZNI FILE
 
-        Path infile = null;
+//        Path infile = null;
+        Path infile = Paths.get(String.format(first, 5));
+
 
         List<List<Integer>> matrix = new ArrayList<>();
         Map<Integer, String> names = new HashMap<>();
@@ -63,7 +69,12 @@ public class Likelihood {
             List<Double> likelihoods = new ArrayList<>();
 
             for (int j = 0; j < i; j++) {
-                String newtree = bestTree.replaceFirst(String.format(" %d ", j), String.format(" ( %d , %d ) ", j, i));
+                String str = String.format(" %d : ", j);
+                int index = bestTree.indexOf(str) + str.length();
+                int index2 = bestTree.indexOf(" ", index);
+                String dist = bestTree.substring(index, index2).strip();
+
+                String newtree = bestTree.replaceFirst(String.format(" %d : %s ", j, dist), String.format(" ( %d : 1.0 , %d : 1.0) : %s", j, i, dist));
                 trees.add(newtree);
 
                 Tree tree = Tree.parse(newtree);
