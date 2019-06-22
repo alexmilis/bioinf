@@ -14,7 +14,7 @@ public class Likelihood {
                                                                     {0.1, 0.1, 0.8, 0.1},
                                                                     {0.1, 0.1, 0.1, 0.8}};
 
-    private static final String STARTTREE = "( 0 : 1.0 , 1 : 1.0);";
+    private static final String STARTTREE = "( 0 : 1.0 , 1 : 1.0 );";
 
     private static final double THRESHOLD = 0.05;
 
@@ -81,8 +81,7 @@ public class Likelihood {
                 int index2 = bestTree.indexOf(" ", index);
                 String dist = bestTree.substring(index, index2).strip();
 
-                String newtree = bestTree.replaceFirst(String.format(" %d : %s ", j, dist), String.format(" ( %d : 1.0 , %d : 1.0) : %s", j, i, dist));
-                trees.add(newtree);
+                String newtree = bestTree.replaceFirst(String.format(" %d : %s ", j, dist), String.format(" ( %d : 1.0 , %d : 1.0 ) : %s", j, i, dist));
 
                 Tree tree = Tree.parse(newtree);
 
@@ -90,6 +89,7 @@ public class Likelihood {
                     evaluateBranches(child, sites);
                 }
                 likelihoods.add(getLikelihood(tree.getRoot()));
+                trees.add(newtree);
             }
 
             bestTree = trees.get(likelihoods.indexOf(Collections.max(likelihoods)));
@@ -142,9 +142,7 @@ public class Likelihood {
                 double B = BLikelihood(node, i);
                 prob *= A * p + B * (1 - p);
             }
-
         }
-
 
         double length = -Math.log(1 - p);
         double change = Math.abs(length - node.distance);
