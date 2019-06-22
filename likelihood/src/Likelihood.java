@@ -26,11 +26,7 @@ public class Likelihood {
 
     public static void main(String[] args) {
 //        Path infile = Paths.get(String.format(random, g, h));
-//        TODO ULAZNI FILE
-
-//        Path infile = null;
-        Path infile = Paths.get(String.format(first, 5));
-
+        Path infile = Paths.get(String.format(first, 10));
 
         matrix = new ArrayList<>();
         Map<Integer, String> names = new HashMap<>();
@@ -62,38 +58,30 @@ public class Likelihood {
 
         long startTime = System.currentTimeMillis();
 
-
         int numberOfTrees = matrix.size();
         int sites = matrix.get(0).size();
         String bestTree = STARTTREE;
-
-
-//        evaluateBranches(Tree.parse(bestTree).getRoot(), sites);
-
 
         for (int i = 2; i < numberOfTrees; i++) {
             List<String> trees = new ArrayList<>();
             List<Double> likelihoods = new ArrayList<>();
 
             for (int j = 0; j < i; j++) {
-                String str = String.format(" %d : ", j);
-                int index = bestTree.indexOf(str) + str.length();
-                int index2 = bestTree.indexOf(" ", index);
-                String dist = bestTree.substring(index, index2).strip();
-
+                String dist = getDistString(bestTree, j);
                 String newtree = bestTree.replaceFirst(String.format(" %d : %s ", j, dist), String.format(" ( %d : 1.0 , %d : 1.0 ) : %s", j, i, dist));
-
                 Tree tree = Tree.parse(newtree);
 
                 for (Tree.Node child : tree.getRoot().children){
                     evaluateBranches(child, sites);
                 }
+
                 likelihoods.add(getLikelihood(tree.getRoot()));
                 trees.add(tree.toString());
             }
 
             bestTree = trees.get(likelihoods.indexOf(Collections.max(likelihoods)));
-
+            System.out.println(bestTree);
+            System.out.println(Collections.max(likelihoods));
         }
 
 
@@ -101,9 +89,13 @@ public class Likelihood {
 
         long time = System.currentTimeMillis() - startTime;
         System.out.println(String.format("Time in millis: %d", time));
+    }
 
-
-
+    private static String getDistString(String bestTree, int j) {
+        String str = String.format(" %d : ", j);
+        int index = bestTree.indexOf(str) + str.length();
+        int index2 = bestTree.indexOf(" ", index);
+        return bestTree.substring(index, index2).strip();
     }
 
     static boolean evaluateBranches(Tree.Node node, int k){
@@ -179,11 +171,6 @@ public class Likelihood {
     static double BLikelihood(Tree.Node node, int index){
 
         double product = 1;
-
-//        if(node.children.size() == 0){
-//            if(index == bases.indexOf(node.value)) return 1;
-//            return 0;
-//        }
 
         if(node.children.size() == 0){
             if (node.value == -1) return 0;
