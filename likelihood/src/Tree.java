@@ -21,6 +21,9 @@ public class Tree {
         StringBuilder sb = new StringBuilder();
         root.print(sb);
         sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
         sb.append(";");
         return sb.toString();
     }
@@ -30,7 +33,7 @@ public class Tree {
     }
 
     private static Node getNode(String line, int index){
-        Node root = new Node(index, "", 0);
+        Node root = new Node(index, "");
         StringBuilder current = new StringBuilder();
 
         Node lastNode = null;
@@ -126,7 +129,7 @@ public class Tree {
                 sb.append(" ) ");
             }
             for (String v : value){
-                sb.append(v);
+                sb.append(v).append(":").append(distance);
             }
         }
     }

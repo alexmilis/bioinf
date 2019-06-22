@@ -4,6 +4,8 @@ public class TreeTest {
 
     @org.junit.Test
     public void toString1() {
+        Tree tree = Tree.parse("(A:0.1,B:0.2,(C:0.3,D:0.4):0.5, E:0.6);");
+        System.out.println(tree);
 
     }
 
