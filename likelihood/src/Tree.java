@@ -30,32 +30,38 @@ public class Tree {
     }
 
     private static Node getNode(String line, int index){
-        Node root = new Node(index, "");
+        Node root = new Node(index, "", 0);
         StringBuilder current = new StringBuilder();
 
         Node lastNode = null;
-        boolean state = false;
+        boolean stateD = false;
+        boolean stateE = false;
         String name = null;
+        double dist = 0;
 
         for (int i = index; i < line.length(); i++){
             char c = line.charAt(i);
             if (Character.isWhitespace(c)) continue;
 
-            if(state){
+            if(stateD){
                 if (Character.isDigit(c) || c == '.'){
                     current.append(c);
                     continue;
                 } else {
-                    lastNode.distance = Double.parseDouble(current.toString());
-                    state = false;
-                    continue;
+                    dist = Double.parseDouble(current.toString());
+                    stateD = false;
+                    if (stateE){
+                        lastNode.distance = dist;
+                        stateE = false;
+                        current = new StringBuilder();
+                    }
                 }
             }
 
             switch (c){
                 case ')':
                     if (current.length() > 0){
-                        lastNode = new Node(i, current.toString());
+                        lastNode = new Node(i, name, dist);
                         root.children.add(lastNode);
                     }
                     root.index = i;
@@ -65,10 +71,11 @@ public class Tree {
                     lastNode = child;
                     i = child.index;
                     root.children.add(child);
+                    stateE = true;
                     break;
                 case ',':
                     if(current.length() > 0){
-                        lastNode = new Node(i, name);
+                        lastNode = new Node(i, name, dist);
                         root.children.add(lastNode);
                     }
                     current = new StringBuilder();
@@ -76,7 +83,7 @@ public class Tree {
                 case ':':
                     name = current.toString();
                     current = new StringBuilder();
-                    state = true;
+                    stateD = true;
                     break;
                 default:
                     current.append(c);
@@ -93,6 +100,10 @@ public class Tree {
         Set<String> value;
         double distance;
         int index;
+
+        Node(int index, String value){
+            this(index, value, 0);
+        }
 
         Node(int index, String value, double distance){
             this.children = new ArrayList<>();
