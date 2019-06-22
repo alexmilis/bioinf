@@ -89,7 +89,7 @@ public class Likelihood {
                     evaluateBranches(child, sites);
                 }
                 likelihoods.add(getLikelihood(tree.getRoot()));
-                trees.add(newtree);
+                trees.add(tree.toString());
             }
 
             bestTree = trees.get(likelihoods.indexOf(Collections.max(likelihoods)));
