@@ -3,11 +3,10 @@ import java.io.FileReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Likelihood {
 
-    private static List<Character> bases = List.of('a', 't', 'c', 'g');
+    private static List<Character> bases = List.of('A', 'T', 'C', 'G');
 
     private static double[] prior = new double[]{0.25, 0.25, 0.25, 0.25};
     private static double[][] changeProbabilities = new double[][]{{0.8, 0.1, 0.1, 0.1},
@@ -21,6 +20,9 @@ public class Likelihood {
 
     private static String first = "resources/first%d.fasta";
 
+    private static List<List<Integer>> matrix;
+
+
 
     public static void main(String[] args) {
 //        Path infile = Paths.get(String.format(random, g, h));
@@ -30,7 +32,7 @@ public class Likelihood {
         Path infile = Paths.get(String.format(first, 5));
 
 
-        List<List<Integer>> matrix = new ArrayList<>();
+        matrix = new ArrayList<>();
         Map<Integer, String> names = new HashMap<>();
 
         System.out.println("Reading file: " + infile);
@@ -43,7 +45,12 @@ public class Likelihood {
             while (line != null) {
                 names.put(i++, line.substring(1));
                 line = reader.readLine();
-                matrix.add(line.chars().mapToObj(c -> bases.indexOf(c)).collect(Collectors.toList()));
+                List<Integer> row = new ArrayList<>();
+
+                for (int j = 0; j < line.length(); j++){
+                    row.add(bases.indexOf(line.charAt(j)));
+                }
+                matrix.add(row);
                 line = reader.readLine();
             }
 
@@ -61,7 +68,7 @@ public class Likelihood {
         String bestTree = STARTTREE;
 
 
-        evaluateBranches(Tree.parse(bestTree).getRoot(), sites);
+//        evaluateBranches(Tree.parse(bestTree).getRoot(), sites);
 
 
         for (int i = 2; i < numberOfTrees; i++) {
@@ -79,8 +86,9 @@ public class Likelihood {
 
                 Tree tree = Tree.parse(newtree);
 
-
-                evaluateBranches(tree.getRoot(), sites);
+                for (Tree.Node child : tree.getRoot().children){
+                    evaluateBranches(child, sites);
+                }
                 likelihoods.add(getLikelihood(tree.getRoot()));
             }
 
@@ -148,15 +156,21 @@ public class Likelihood {
     static double ALikelihood(Tree.Node node, int index){
         double sum = 0;
 
+//        Todo ubaci bace sa indexa indeks
+
+
         if(node.children.size() == 0){
-            if(index == bases.indexOf(node.value)) return 1;
-            return 0;
+            if (node.value == -1) return 1;
+            int base = matrix.get(node.value).get(index);
+            if (base == -1) return 1;
+//            if(index == bases.indexOf(node.value)) return 1;
+            return 1 * prior[base];
         }
 
         for(int i = 0; i < 4; i++){
             double current = prior[i];
             for(Tree.Node child : node.children){
-                current *= likelihood(child, i);
+                current *= ALikelihood(child, i);
             }
             sum += current;
         }
@@ -168,16 +182,24 @@ public class Likelihood {
 
         double product = 1;
 
+//        if(node.children.size() == 0){
+//            if(index == bases.indexOf(node.value)) return 1;
+//            return 0;
+//        }
+
         if(node.children.size() == 0){
-            if(index == bases.indexOf(node.value)) return 1;
-            return 0;
+            if (node.value == -1) return 0;
+            int base = matrix.get(node.value).get(index);
+            if (base == -1) return 0;
+//            if(index == bases.indexOf(node.value)) return 1;
+            return 1;
         }
 
         for(Tree.Node child : node.children){
             double sum = 0;
             for(int i = 0; i < 4; i++){
 //                iteriranje po indexu ili i?
-                sum += prior[i] * likelihood(child, i);
+                sum += prior[i] * BLikelihood(child, i);
             }
             product *= sum;
         }

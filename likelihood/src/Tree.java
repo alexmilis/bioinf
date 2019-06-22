@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Tree {
 
@@ -34,7 +32,7 @@ public class Tree {
     }
 
     private static Node getNode(String line, int index){
-        Node root = new Node(index, "");
+        Node root = new Node(index, -1);
         StringBuilder current = new StringBuilder();
 
         Node lastNode = null;
@@ -65,7 +63,7 @@ public class Tree {
             switch (c){
                 case ')':
                     if (current.length() > 0){
-                        lastNode = new Node(i, name, dist);
+                        lastNode = new Node(i, Integer.parseInt(name), dist);
                         root.children.add(lastNode);
                     }
                     root.index = i;
@@ -79,7 +77,7 @@ public class Tree {
                     break;
                 case ',':
                     if(current.length() > 0){
-                        lastNode = new Node(i, name, dist);
+                        lastNode = new Node(i, Integer.parseInt(name), dist);
                         root.children.add(lastNode);
                     }
                     current = new StringBuilder();
@@ -101,20 +99,19 @@ public class Tree {
 
     static class Node {
         List<Node> children;
-        Set<String> value;
+        int value;
         double distance;
         int index;
 
-        Node(int index, String value){
+        Node(int index, int value){
             this(index, value, 0);
         }
 
-        Node(int index, String value, double distance){
+        Node(int index, int value, double distance){
             this.children = new ArrayList<>();
             this.index = index;
             this.distance = distance;
-            this.value = new HashSet<>();
-            this.value.add(value);
+            this.value = value;
         }
 
         void print(StringBuilder sb){
@@ -129,9 +126,7 @@ public class Tree {
                 sb.deleteCharAt(sb.length() - 1);
                 sb.append(" ) ");
             }
-            for (String v : value){
-                sb.append(v).append(" : ").append(distance);
-            }
+            sb.append(value).append(" : ").append(distance);
         }
     }
 }
