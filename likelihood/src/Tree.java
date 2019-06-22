@@ -126,7 +126,10 @@ public class Tree {
                 sb.deleteCharAt(sb.length() - 1);
                 sb.append(" ) ");
             }
-            sb.append(value).append(" : ").append(distance);
+            if (value != -1){
+                sb.append(value);
+            }
+            sb.append(" : ").append(distance);
         }
     }
 }
