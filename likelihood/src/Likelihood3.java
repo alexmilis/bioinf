@@ -219,15 +219,22 @@ public class Likelihood3 {
             }
             if (sum != 0){
                 if (sum < 1){
+                    String number = Double.toString(sum);
+                    for (int h = 2; h < number.length(); h++){
+                        if (number.charAt(h) != '0'){
+                            zeros += h - 1;
+                            break;
+                        }
+                    }
                     product *= sum * 10;
-                    zeros += 1;
                 } else {
                     product *= sum;
                 }
             }
         }
 
-        return product;
+        return zeros;
+//        return product;
     }
 
     static void fillSites(Tree.Node root, int site){
