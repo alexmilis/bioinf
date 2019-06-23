@@ -1,4 +1,3 @@
-/opt/idea/jre64/bin/java -javaagent:/opt/idea/lib/idea_rt.jar=45259:/opt/idea/bin -Dfile.encoding=UTF-8 -classpath /home/alex/Desktop/bioinf/bioinf/out/production/likelihood:/home/alex/.m2/repository/junit/junit/4.12/junit-4.12.jar:/home/alex/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar Likelihood3
 Reading file: resources/random_data/prolazak1/random5.fasta
 The best tree:
 ( ( ( A1.CM.08.886_24.KP718928 : 0.9704960400597062 , ( A1.GM.05.N33456.HQ385452 : 1.021765733314084 , A1.KE.00.00KE_KSM4030.AY736816 : 0.9555653812393433 )  : 0.24688171973177725 )  : 0.5995389073695051 , A1.CY.09.CY243.JF683789 : 0.9906088784768173 )  : 0.3629315699262353 , A1.CY.06.CY164.FJ388946 : 0.9776262716230814 )  ;
