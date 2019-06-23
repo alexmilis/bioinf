@@ -26,11 +26,7 @@ public class Likelihood3 {
 
     public static void main(String[] args) {
 //        Path infile = Paths.get(String.format(random, g, h));
-//        TODO ULAZNI FILE
-
-//        Path infile = null;
         Path infile = Paths.get(String.format(first, 5));
-
 
         matrix = new ArrayList<>();
         Map<Integer, String> names = new HashMap<>();
@@ -119,9 +115,7 @@ public class Likelihood3 {
 
     static boolean branch(Tree.Node node, int k){
         double prob = 1;
-
-        double oldlikelihood = getLikelihood(node, k); //TODO PROVJERI JEL RADI
-
+        double oldlikelihood = getLikelihood(node, k);
         double p = Math.exp(-node.distance);
 
         while (Math.abs(prob - oldlikelihood)> THRESHOLD){
@@ -152,63 +146,48 @@ public class Likelihood3 {
     static double ALikelihood(Tree.Node node, int index){
         double sum = 0;
 
-//        Todo ubaci bace sa indexa indeks
-
-
         if(node.children.size() == 0){
             if (node.value == -1) return 1;
             int base = matrix.get(node.value).get(index);
             if (base == -1) return 1;
-//            if(index == bases.indexOf(node.value)) return 1;
             return 1 * prior[base];
         }
 
         for(int i = 0; i < 4; i++){
             double current = prior[i];
             for(Tree.Node child : node.children){
-                current *= ALikelihood(child, i);
+                current *= ALikelihood(child, index);
             }
             sum += current;
         }
         return sum;
-
     }
 
     static double BLikelihood(Tree.Node node, int index){
-
         double product = 1;
-
-//        if(node.children.size() == 0){
-//            if(index == bases.indexOf(node.value)) return 1;
-//            return 0;
-//        }
 
         if(node.children.size() == 0){
             if (node.value == -1) return 0;
             int base = matrix.get(node.value).get(index);
             if (base == -1) return 0;
-//            if(index == bases.indexOf(node.value)) return 1;
             return 1;
         }
 
         for(Tree.Node child : node.children){
             double sum = 0;
             for(int i = 0; i < 4; i++){
-//                iteriranje po indexu ili i?
                 sum += prior[i] * BLikelihood(child, i);
             }
             product *= sum;
         }
         return product;
-
     }
 
 
     static double getLikelihood(Tree.Node root, int sites){
-        double product = 1;
+//        double product = 1;
         int zeros = 0;
 
-//        for (int site = 0; site < sites; site++){
         for (int site = 0; site < sites; site++){
             fillSites(root, site);
             double sum = 0;
@@ -217,22 +196,26 @@ public class Likelihood3 {
             }
             if (sum != 0){
                 if (sum < 1){
-                    String number = Double.toString(sum);
-                    for (int h = 2; h < number.length(); h++){
-                        if (number.charAt(h) != '0'){
-                            zeros += h - 1;
-                            break;
-                        }
-                    }
-                    product *= sum * 10;
+                    zeros += getZeros(sum);
+//                    product *= sum * 10;
                 } else {
-                    product *= sum;
+//                    product *= sum;
                 }
             }
         }
 
         return zeros;
 //        return product;
+    }
+
+    private static int getZeros(double sum) {
+        String number = Double.toString(sum);
+        for (int h = 2; h < number.length(); h++){
+            if (number.charAt(h) != '0'){
+                return h - 1;
+            }
+        }
+        return number.length();
     }
 
     static void fillSites(Tree.Node root, int site){
@@ -245,8 +228,6 @@ public class Likelihood3 {
     }
 
 
-
-    //  todo pretvori baze u brojeve kao indeksi u bases
     private static double likelihood(Tree.Node node, int index){
         double product = 1;
 
@@ -258,7 +239,6 @@ public class Likelihood3 {
         for(Tree.Node child : node.children){
             double sum = 0;
             for(int i = 0; i < 4; i++){
-//                iteriranje po indexu ili i?
                 sum += probability(index, i, child.distance) * likelihood(child, i);
             }
             if (sum != 0) {

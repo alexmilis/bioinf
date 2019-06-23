@@ -1,3 +1,21 @@
 Reading file: resources/first5.fasta
 ( ( ( ( 0 : 0.8621458604981398 , 4 : 0.8808566961183141 )  : 0.6416060507404144 , 3 : 0.8369098800253442 )  : 0.35135806702404604 , 2 : 0.8642561277390626 )  : 0.19917338524977413 , 1 : 0.8545503701209686 )  ;
 Time in millis: 262
+
+
+/opt/idea/jre64/bin/java -javaagent:/opt/idea/lib/idea_rt.jar=39037:/opt/idea/bin -Dfile.encoding=UTF-8 -classpath /home/alex/Desktop/bioinf/bioinf/out/production/likelihood:/home/alex/.m2/repository/junit/junit/4.12/junit-4.12.jar:/home/alex/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar Likelihood3
+Reading file: resources/first5.fasta
+( ( 0 : 0.974384409296006 , 4 : 1.024630424050369 )  : 0.6455523514110362 , ( 1 : 0.9877116821347687 , ( 2 : 1.0070942161071972 , 3 : 0.9859524041244332 )  : 1.0103952685676827 )  : 0.003870727841875431 )  ;
+Time in millis: 1523
+
+Process finished with exit code 0
+
+Reading file: resources/first5.fasta
+( ( ( 0 : 0.974384409296006 , 4 : 1.024630424050369 )  : 1.2254631387455226 , 3 : 0.9859524041244332 )  : 0.9567818794312593 , ( 1 : 0.9877116821347687 , 2 : 1.0081436577292242 )  : 0.3643526644666506 )  ;
+Time in millis: 969
+
+
+/opt/idea/jre64/bin/java -javaagent:/opt/idea/lib/idea_rt.jar=39139:/opt/idea/bin -Dfile.encoding=UTF-8 -classpath /home/alex/Desktop/bioinf/bioinf/out/production/likelihood:/home/alex/.m2/repository/junit/junit/4.12/junit-4.12.jar:/home/alex/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar Likelihood3
+Reading file: resources/first5.fasta
+( ( ( 0 : 0.974384409296006 , 4 : 1.024630424050369 )  : 1.2254631387455226 , 3 : 0.9859524041244332 )  : 0.9567818794312593 , ( 1 : 0.9877116821347687 , 2 : 1.0081436577292242 )  : 0.3643526644666506 )  ;
+Time in millis: 961
