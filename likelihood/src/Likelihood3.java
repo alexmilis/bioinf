@@ -1,7 +1,8 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.*;
 
 public class Likelihood3 {
@@ -19,78 +20,98 @@ public class Likelihood3 {
     private static final double THRESHOLD = 0.05;
 
     private static String first = "resources/first%d.fasta";
+    private static String random = "../resources/random_data/prolazak%d/random%d.fasta";
+
+    private static String resultTreeFile = "results/prolazak%d/tree%d.txt";
 
     private static List<List<Integer>> matrix;
 
-
-
     public static void main(String[] args) {
-//        Path infile = Paths.get(String.format(random, g, h));
-        Path infile = Paths.get(String.format(first, 5));
+        for (int g = 1; g < 11; g++) {
+            for (int h = 5; h < 11; h++) {
+//                Path infile = Paths.get(String.format("resources/first%d.fasta", h));
+                Path infile = Paths.get(String.format(random, g, h));
 
-        matrix = new ArrayList<>();
-        Map<Integer, String> names = new HashMap<>();
+                matrix = new ArrayList<>();
+                Map<Integer, String> names = new HashMap<>();
 
-        System.out.println("Reading file: " + infile);
+                System.out.println("Reading file: " + infile);
 
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(infile.toString()));
-            String line = reader.readLine();
+                try {
+                    BufferedReader reader = new BufferedReader(new FileReader(infile.toString()));
+                    String line = reader.readLine();
 
-            int i = 0;
-            while (line != null) {
-                names.put(i++, line.substring(1));
-                line = reader.readLine();
-                List<Integer> row = new ArrayList<>();
+                    int i = 0;
+                    while (line != null) {
+                        names.put(i++, line.substring(1));
+                        line = reader.readLine();
+                        List<Integer> row = new ArrayList<>();
 
-                for (int j = 0; j < line.length(); j++){
-                    row.add(bases.indexOf(line.charAt(j)));
+                        for (int j = 0; j < line.length(); j++) {
+                            row.add(bases.indexOf(line.charAt(j)));
+                        }
+                        matrix.add(row);
+                        line = reader.readLine();
+                    }
+
+                    reader.close();
+                } catch (Exception ex) {
+                    System.out.println("Cannot read file");
+                    System.exit(1);
                 }
-                matrix.add(row);
-                line = reader.readLine();
-            }
 
-            reader.close();
-        } catch (Exception ex) {
-            System.out.println("Cannot read file");
-            System.exit(1);
-        }
-
-        long startTime = System.currentTimeMillis();
+                long startTime = System.currentTimeMillis();
 
 
-        int numberOfTrees = matrix.size();
-        int sites = matrix.get(0).size();
-        String bestTree = STARTTREE;
+                int numberOfTrees = matrix.size();
+                int sites = matrix.get(0).size();
+                String bestTree = STARTTREE;
 
-        for (int i = 2; i < numberOfTrees; i++) {
-            List<String> trees = new ArrayList<>();
-            List<Double> likelihoods = new ArrayList<>();
+                for (int i = 2; i < numberOfTrees; i++) {
+                    List<String> trees = new ArrayList<>();
+                    List<Double> likelihoods = new ArrayList<>();
 
-            for (int j = 0; j < i; j++) {
-                String dist = getDistString(bestTree, j);
-                String newtree = bestTree.replaceFirst(String.format(" %d : %s ", j, dist), String.format(" ( %d : 1.0 , %d : 1.0 ) : %s", j, i, dist));
-                Tree tree = Tree.parse(newtree);
+                    for (int j = 0; j < i; j++) {
+                        String dist = getDistString(bestTree, j);
+                        String newtree = bestTree.replaceFirst(String.format(" %d : %s ", j, dist), String.format(" ( %d : 1.0 , %d : 1.0 ) : %s", j, i, dist));
+                        Tree tree = Tree.parse(newtree);
 
-                for (Tree.Node child : tree.getRoot().children){
-                    evaluateBranches(child, sites);
+                        for (Tree.Node child : tree.getRoot().children) {
+                            evaluateBranches(child, sites);
+                        }
+                        likelihoods.add(getLikelihood(tree.getRoot(), sites));
+                        trees.add(tree.toString());
+                    }
+
+                    bestTree = trees.get(likelihoods.indexOf(Collections.min(likelihoods)));
+
                 }
-                likelihoods.add(getLikelihood(tree.getRoot(), sites));
-                trees.add(tree.toString());
+
+
+                System.out.println(bestTree);
+
+                long time = System.currentTimeMillis() - startTime;
+                System.out.println(String.format("Time in millis: %d", time));
+
+
+                try {
+                    String tree = bestTree;
+                    for (int k = 0; k < matrix.size(); k++) {
+                        tree = tree.replace(String.format(" %d ", k), String.format(" %s ", names.get(k)));
+                    }
+                    System.out.println(tree);
+
+                    OutputStream out = new BufferedOutputStream(Files.newOutputStream(
+                            Paths.get(String.format(resultTreeFile, g, h)), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING));
+                    out.write(tree.getBytes());
+                    out.flush();
+                    out.close();
+                } catch (IOException ex) {
+                    System.exit(1);
+                }
+
             }
-
-            bestTree = trees.get(likelihoods.indexOf(Collections.min(likelihoods)));
-
         }
-
-
-        System.out.println(bestTree);
-
-        long time = System.currentTimeMillis() - startTime;
-        System.out.println(String.format("Time in millis: %d", time));
-
-
-
     }
 
     private static String getDistString(String bestTree, int j) {

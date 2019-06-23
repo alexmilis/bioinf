@@ -20,7 +20,6 @@ public class Parsimony {
 
     public static void main(String[] args) {
         for (int g = 1; g < 11; g++){
-
             for (int h = 5; h < 11; h++) {
 //                Path infile = Paths.get(String.format("resources/first%d.fasta", h));
                 Path infile = Paths.get(String.format(random, g, h));
