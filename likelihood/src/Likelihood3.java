@@ -20,15 +20,15 @@ public class Likelihood3 {
     private static final double THRESHOLD = 0.05;
 
     private static String first = "resources/first%d.fasta";
-    private static String random = "../resources/random_data/prolazak%d/random%d.fasta";
+    private static String random = "resources/random_data/prolazak%d/random%d.fasta";
 
-    private static String resultTreeFile = "results/prolazak%d/tree%d.txt";
+    private static String resultTreeFile = "likelihood/results/prolazak%d/tree%d.txt";
 
     private static List<List<Integer>> matrix;
 
     public static void main(String[] args) {
         for (int g = 1; g < 11; g++) {
-            for (int h = 5; h < 11; h++) {
+            for (int h = 10; h < 11; h++) {
 //                Path infile = Paths.get(String.format("resources/first%d.fasta", h));
                 Path infile = Paths.get(String.format(random, g, h));
 
@@ -87,19 +87,16 @@ public class Likelihood3 {
 
                 }
 
-
-                System.out.println(bestTree);
-
                 long time = System.currentTimeMillis() - startTime;
-                System.out.println(String.format("Time in millis: %d", time));
-
 
                 try {
                     String tree = bestTree;
                     for (int k = 0; k < matrix.size(); k++) {
                         tree = tree.replace(String.format(" %d ", k), String.format(" %s ", names.get(k)));
                     }
+                    System.out.println("The best tree:");
                     System.out.println(tree);
+                    System.out.println(String.format("Time in millis: %d \n\n\n\n", time));
 
                     OutputStream out = new BufferedOutputStream(Files.newOutputStream(
                             Paths.get(String.format(resultTreeFile, g, h)), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING));
