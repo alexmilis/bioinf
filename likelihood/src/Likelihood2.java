@@ -4,15 +4,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class Likelihood {
+public class Likelihood2 {
 
     private static List<Character> bases = List.of('A', 'T', 'C', 'G');
 
     private static double[] prior = new double[]{0.25, 0.25, 0.25, 0.25};
     private static double[][] changeProbabilities = new double[][]{{0.8, 0.1, 0.1, 0.1},
-                                                                    {0.1, 0.8, 0.1, 0.1},
-                                                                    {0.1, 0.1, 0.8, 0.1},
-                                                                    {0.1, 0.1, 0.1, 0.8}};
+            {0.1, 0.8, 0.1, 0.1},
+            {0.1, 0.1, 0.8, 0.1},
+            {0.1, 0.1, 0.1, 0.8}};
 
     private static final String STARTTREE = "( 0 : 1.0 , 1 : 1.0 );";
 
@@ -26,7 +26,11 @@ public class Likelihood {
 
     public static void main(String[] args) {
 //        Path infile = Paths.get(String.format(random, g, h));
-        Path infile = Paths.get(String.format(first, 10));
+//        TODO ULAZNI FILE
+
+//        Path infile = null;
+        Path infile = Paths.get(String.format(first, 5));
+
 
         matrix = new ArrayList<>();
         Map<Integer, String> names = new HashMap<>();
@@ -58,30 +62,38 @@ public class Likelihood {
 
         long startTime = System.currentTimeMillis();
 
+
         int numberOfTrees = matrix.size();
         int sites = matrix.get(0).size();
         String bestTree = STARTTREE;
+
+
+//        evaluateBranches(Tree.parse(bestTree).getRoot(), sites);
+
 
         for (int i = 2; i < numberOfTrees; i++) {
             List<String> trees = new ArrayList<>();
             List<Double> likelihoods = new ArrayList<>();
 
             for (int j = 0; j < i; j++) {
-                String dist = getDistString(bestTree, j);
+                String str = String.format(" %d : ", j);
+                int index = bestTree.indexOf(str) + str.length();
+                int index2 = bestTree.indexOf(" ", index);
+                String dist = bestTree.substring(index, index2).strip();
+
                 String newtree = bestTree.replaceFirst(String.format(" %d : %s ", j, dist), String.format(" ( %d : 1.0 , %d : 1.0 ) : %s", j, i, dist));
+
                 Tree tree = Tree.parse(newtree);
 
                 for (Tree.Node child : tree.getRoot().children){
                     evaluateBranches(child, sites);
                 }
-
-                likelihoods.add(getLikelihood(tree.getRoot(), sites));
+                likelihoods.add(getLikelihood(tree.getRoot()));
                 trees.add(tree.toString());
             }
 
             bestTree = trees.get(likelihoods.indexOf(Collections.max(likelihoods)));
-            System.out.println(bestTree);
-            System.out.println(Collections.max(likelihoods));
+
         }
 
 
@@ -89,13 +101,9 @@ public class Likelihood {
 
         long time = System.currentTimeMillis() - startTime;
         System.out.println(String.format("Time in millis: %d", time));
-    }
 
-    private static String getDistString(String bestTree, int j) {
-        String str = String.format(" %d : ", j);
-        int index = bestTree.indexOf(str) + str.length();
-        int index2 = bestTree.indexOf(" ", index);
-        return bestTree.substring(index, index2).strip();
+
+
     }
 
     static boolean evaluateBranches(Tree.Node node, int k){
@@ -114,7 +122,7 @@ public class Likelihood {
     static boolean branch(Tree.Node node, int k){
         double prob = 1;
 
-        double oldlikelihood = getLikelihood(node, k); //TODO PROVJERI JEL RADI
+        double oldlikelihood = getLikelihood(node); //TODO PROVJERI JEL RADI
 
         double p = Math.exp(-node.distance);
 
@@ -122,105 +130,100 @@ public class Likelihood {
             oldlikelihood = prob;
             double sum = 0;
             for (int i = 0; i < k; i++){
-                fillSites(node, k - 1);
-
-                double sumA = 0, sumB = 0;
-                for(int j = 0; j < 4; j++) {
-                    sumA += ALikelihood(node, i, j);
-                    sumB += BLikelihood(node, i, j);
-                }
-                sum += (sumB * p) / (sumA * (1 - p) + sumB * p);
+                double A = ALikelihood(node, i);
+                double B = BLikelihood(node, i);
+                sum += (B * p) / (A * (1 - p) + B * p);
             }
 
             p = sum / k;
-            if (p <= 0){
-                System.out.println("wtf2");
-            }
 
+            prob = 1;
             for (int i = 0; i < k; i++){
-                double sumA = 0, sumB = 0;
-                for(int j = 0; j < 4; j++) {
-                    sumA += ALikelihood(node, i, j);
-                    sumB += BLikelihood(node, i, j);
-                }
-                prob *= (sumA * p + sumB * (1 - p));
+                double A = ALikelihood(node, i);
+                double B = BLikelihood(node, i);
+                prob *= A * p + B * (1 - p);
             }
         }
 
         double length = -Math.log(1 - p);
         double change = Math.abs(length - node.distance);
-        if (length < 0){
-            System.out.println("wtf");
-        }
         node.distance = length;
 
         return change > THRESHOLD;
     }
 
-    static double ALikelihood(Tree.Node node, int index, int base){
+    static double ALikelihood(Tree.Node node, int index){
+        double sum = 0;
+
 //        Todo ubaci bace sa indexa indeks
-        if(node.children.size() == 0){
-            if (node.value == -1) return 0;
-            if (matrix.get(node.value).get(index) == base) return 1;        //TODO PROVJERI FORMULE
-            return 0;
-        }
 
-        double current = prior[base];
-        for(Tree.Node child : node.children){
-            current *= ALikelihood(child, index, base);
-        }
-        return current;
-
-    }
-
-    static double BLikelihood(Tree.Node node, int index, int base){
-        double product = 1;
 
         if(node.children.size() == 0){
             if (node.value == -1) return 0;
-            if (matrix.get(node.value).get(index) == base) return 1;
-            return 0;
+            int base = matrix.get(node.value).get(index);
+            if (base == -1) return 0;
+            return 1;
         }
 
-        for(Tree.Node child : node.children){
-            product *= prior[base] * BLikelihood(child, index, base);
+        for(int i = 0; i < 4; i++){
+            double current = prior[i];
+            for(Tree.Node child : node.children){
+                current *= ALikelihood(child, i);
+            }
+            sum += current;
         }
-        return product;
+        return sum;
 
     }
 
+    static double BLikelihood(Tree.Node node, int index){
 
-    static double getLikelihood(Tree.Node root, int sites){
         double product = 1;
 
+//        if(node.children.size() == 0){
+//            if(index == bases.indexOf(node.value)) return 1;
+//            return 0;
+//        }
 
-        for (int site = 0; site < sites; site++){
-            fillSites(root, site);
+        if(node.children.size() == 0){
+            if (node.value == -1) return 0;
+            int base = matrix.get(node.value).get(index);
+            if (base == -1) return 0;
+//            if(index == bases.indexOf(node.value)) return 1;
+            return 1;
+        }
+
+        for(Tree.Node child : node.children){
             double sum = 0;
             for(int i = 0; i < 4; i++){
-                sum += prior[i] * likelihood(root, i);
+//                iteriranje po indexu ili i?
+                sum += prior[i] * BLikelihood(child, i);
             }
-            if (sum != 0) product *= sum;
+            product *= sum;
         }
-
         return product;
+
     }
 
-    static void fillSites(Tree.Node root, int site){
-        if (root.children.size() == 0){
-            root.base = matrix.get(root.value).get(site);
+
+    static double getLikelihood(Tree.Node root){
+        double sum = 0;
+
+        for(int i = 0; i < 4; i++){
+            sum += prior[i] * likelihood(root, i);
         }
-        for (Tree.Node child : root.children){
-            fillSites(child, site);
-        }
+
+        return sum;
     }
 
-//  todo pretvori baze u brojeve kao indeksi u bases
+
+
+    //  todo pretvori baze u brojeve kao indeksi u bases
     private static double likelihood(Tree.Node node, int index){
         double product = 1;
 
         if(node.children.size() == 0){
-            if(index == node.base) return 1;
+            if(index == bases.indexOf(node.value)) return 1;
             return 0;
         }
 

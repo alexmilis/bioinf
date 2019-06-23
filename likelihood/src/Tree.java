@@ -50,6 +50,9 @@ public class Tree {
                     current.append(c);
                     continue;
                 } else {
+                    if (current.toString().length() == 0){
+                        System.out.println("pls");
+                    }
                     dist = Double.parseDouble(current.toString());
                     stateD = false;
                     if (stateE){
@@ -100,6 +103,7 @@ public class Tree {
     static class Node {
         List<Node> children;
         int value;
+        int base;
         double distance;
         int index;
 
