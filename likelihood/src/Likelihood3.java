@@ -67,22 +67,13 @@ public class Likelihood3 {
         int sites = matrix.get(0).size();
         String bestTree = STARTTREE;
 
-
-//        evaluateBranches(Tree.parse(bestTree).getRoot(), sites);
-
-
         for (int i = 2; i < numberOfTrees; i++) {
             List<String> trees = new ArrayList<>();
             List<Double> likelihoods = new ArrayList<>();
 
             for (int j = 0; j < i; j++) {
-                String str = String.format(" %d : ", j);
-                int index = bestTree.indexOf(str) + str.length();
-                int index2 = bestTree.indexOf(" ", index);
-                String dist = bestTree.substring(index, index2).strip();
-
+                String dist = getDistString(bestTree, j);
                 String newtree = bestTree.replaceFirst(String.format(" %d : %s ", j, dist), String.format(" ( %d : 1.0 , %d : 1.0 ) : %s", j, i, dist));
-
                 Tree tree = Tree.parse(newtree);
 
                 for (Tree.Node child : tree.getRoot().children){
@@ -92,7 +83,7 @@ public class Likelihood3 {
                 trees.add(tree.toString());
             }
 
-            bestTree = trees.get(likelihoods.indexOf(Collections.max(likelihoods)));
+            bestTree = trees.get(likelihoods.indexOf(Collections.min(likelihoods)));
 
         }
 
@@ -104,6 +95,13 @@ public class Likelihood3 {
 
 
 
+    }
+
+    private static String getDistString(String bestTree, int j) {
+        String str = String.format(" %d : ", j);
+        int index = bestTree.indexOf(str) + str.length();
+        int index2 = bestTree.indexOf(" ", index);
+        return bestTree.substring(index, index2).strip();
     }
 
     static boolean evaluateBranches(Tree.Node node, int k){
@@ -211,7 +209,7 @@ public class Likelihood3 {
         int zeros = 0;
 
 //        for (int site = 0; site < sites; site++){
-        for (int site = 0; site < 200; site++){
+        for (int site = 0; site < sites; site++){
             fillSites(root, site);
             double sum = 0;
             for(int i = 0; i < 4; i++){
